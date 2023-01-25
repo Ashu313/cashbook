@@ -15,3 +15,8 @@ body{
   background:linear-gradient(90deg, #5D54A4, #7C78B8);
   cursor: pointer;
 }
+body .main{
+  background-color: #18191A;
+  
+  height: 100%;
+}

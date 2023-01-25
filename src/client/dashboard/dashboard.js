@@ -51,6 +51,7 @@ const data1 = {
             <img src="./a1.png"></img>
         </div>
     </div>
+  
     <div className="sidebar">
         <ul>
         <li><a href="#">
@@ -122,7 +123,8 @@ const data1 = {
 
             </div>
         </div>
-    </div>
+        </div>
+ 
 
 
 </>

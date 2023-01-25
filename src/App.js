@@ -13,19 +13,20 @@ import Dashboard from './client/dashboard/dashboard';
 import AddExpense from './client/expenseTable/expense';
 import AddIncome from './client/incomeTable/income';
 import Navbar from './client/container/Navbar/Navbar';
+import ProtectedRoute from './client/container/Navbar/protected';
 function App() {
   return (
     <>
     <Router>
-<Navbar/>
+{/*<Navbar/>*/}
     
 <Routes>
 <Route path="/" element={<Home></Home>}/>
   <Route path="/login" element={<Login></Login>}/>
-  <Route path="/AddExpense" element={<AddExpense/>}/>
-  <Route path="/income" element={<AddIncome/>}/>
+  <Route path="/AddExpense" element={<ProtectedRoute><AddExpense/></ProtectedRoute>}/>
+  <Route path="/AddIncome" element={<ProtectedRoute><AddIncome/></ProtectedRoute>}/>
   <Route path="/signup" element={<Signup/>}/>
-  <Route path='/dashboard' element={<Dashboard/>}/>
+  <Route path='/dashboard' element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
 </Routes>
     </Router>
    
