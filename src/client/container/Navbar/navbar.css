@@ -1,0 +1,71 @@
+
+
+.navbar-container{
+    display: flex;
+    margin-top: 20px;
+  
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+.content-data{
+    position: absolute;
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+   right: 10px;
+
+}
+.menu-icons{
+    height: 70px;
+}
+.menu-icons img{
+    transform:rotate(234deg);
+}
+.container-1{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    
+   
+}
+.expense-image{
+   flex: 1 1 40rem;
+
+ 
+}
+
+.container-1-text h1{
+    font-size: 40px;
+    text-align: center;
+}
+.container-1-text p{
+    font-size: 30px;
+    text-align: center;
+}
+.btn{
+    text-align: center;
+   
+}
+button{
+    background-color: green;
+    color: white;
+    font-size: 30px;
+    border-radius: 25px;
+    padding: 1rem;
+    cursor: pointer;
+}
+.container-1-text{
+    flex: 1 1 40rem;
+    flex: 1 1 40rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.container-1-text .image{
+    width: 100px;
+    transform: rotate(234deg);
+}

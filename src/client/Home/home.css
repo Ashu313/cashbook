@@ -1,0 +1,14 @@
+
+.stock-expense{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+.stock-expense .image{
+    flex: 1 1 40rem;
+    width:100px;
+}
+.stock-expense .text{
+    flex: 1 1 40rem;
+    font-size: 30px;
+}
