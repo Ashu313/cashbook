@@ -64,11 +64,12 @@ box-shadow: 0 0 40px rgba(8,7,16,0.6);
         display: flex;
        gap: 2rem;
        margin-top: 10px;
-       font-size: 20px;
+       
     }
     .buttons button{
         background-color: orange;
-        font-size: 20px;
+        font-size: 15px;
+        padding:10px
     }
     .wrapper .social-icons{
         margin-top: 10px;
