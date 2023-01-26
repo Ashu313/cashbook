@@ -22,8 +22,9 @@ function App() {
     <Router>
 {/*<Navbar/>*/}
 {useSelector(state=>state?.users?.userAuth)?<Dashboard/>:<Navbar/>}
+{/*{useSelector(state=>state?.users?.userAuth)?<Dashboard/>:<Home/>}*/}
 <Routes>
-<Route path="/" element={<Home></Home>}/>
+<Route path="/" element={useSelector(state=>state?.users?.userAuth)?<Dashboard/>:<Home/>}/>
   <Route path="/login" element={<Login></Login>}/>
   <Route path="/AddExpense" element={<ProtectedRoute><AddExpense/></ProtectedRoute>}/>
   <Route path="/AddIncome" element={<ProtectedRoute><AddIncome/></ProtectedRoute>}/>

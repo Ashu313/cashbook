@@ -11,7 +11,7 @@ const ProtectedRoute=({children})=>{
   
     return (
 
-        UserLogin?children:<Navigate to='/login'></Navigate>
+        UserLogin?children:<Navigate to='/'></Navigate>
     //remaining aruement as a parmeter;
     
     );

@@ -50,9 +50,13 @@ catch(error)
 
 }
 });
+const userloginfromlocalstorage=localStorage.getItem('userinfo')?JSON.parse(localStorage.getItem('userinfo')):undefined;
 const Userslices=createSlice({
     name:"users",
-    initialState:{},
+    initialState:{
+        userAuth:userloginfromlocalstorage
+    },
+    
     //builder 3 choice handle krta hai 
     //1.fulfiled 2.reject 3.pending state
     extraReducers:builder=>{
