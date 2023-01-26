@@ -12,7 +12,8 @@ body{
   top: 20px;
   color:white;
   font-size: 20px;
-  background:linear-gradient(90deg, #5D54A4, #7C78B8);
+  /*background:linear-gradient(90deg, #5D54A4, #7C78B8);*/
+  background-color: #282c34;
   cursor: pointer;
 }
 body .main{
