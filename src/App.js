@@ -15,12 +15,14 @@ import AddIncome from './client/incomeTable/income';
 import Navbar from './client/container/Navbar/Navbar';
 import ProtectedRoute from './client/container/Navbar/protected';
 import { useSelector } from 'react-redux';
+//use selector select the element from the redux tool kit or from store
 function App() {
   
   return (
     <>
     <Router>
 {/*<Navbar/>*/}
+
 {useSelector(state=>state?.users?.userAuth)?<Dashboard/>:<Navbar/>}
 {/*{useSelector(state=>state?.users?.userAuth)?<Dashboard/>:<Home/>}*/}
 <Routes>
