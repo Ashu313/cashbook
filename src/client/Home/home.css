@@ -12,3 +12,14 @@
     flex: 1 1 40rem;
     font-size: 30px;
 }
+h1{
+    color:orange;
+    font-size: 35px;
+}
+p{
+    color:white;
+    font-size: 20px;
+}
+span{
+    font-size: 30px;
+}

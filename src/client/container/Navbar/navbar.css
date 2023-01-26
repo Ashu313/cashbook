@@ -35,12 +35,12 @@ img{
 
  
 }
-ul li{
+.content1 ul li{
     color:orange;
     font-size: 30px;
     padding: 10px;
 }
-ul li:hover{
+.content1 ul li:hover{
     background-color: orange;
     color: #282c34;
     background-color: orange;
