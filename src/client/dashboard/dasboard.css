@@ -143,6 +143,10 @@ box-shadow: rgba(0, 0, 0, 0.8);
     font-size: 20px;
     text-align: center;
 }
+i{
+    font-size: 40px;
+    margin-top: 10px;
+}
 @media (max-width:1120px)
 {
     .sidebar{

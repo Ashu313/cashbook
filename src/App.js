@@ -15,6 +15,7 @@ import AddIncome from './client/incomeTable/income';
 import Navbar from './client/container/Navbar/Navbar';
 import ProtectedRoute from './client/container/Navbar/protected';
 import { useSelector } from 'react-redux';
+import Profile from './client/container/profileView/profile';
 //use selector select the element from the redux tool kit or from store
 function App() {
   
@@ -32,6 +33,7 @@ function App() {
   <Route path="/AddIncome" element={<ProtectedRoute><AddIncome/></ProtectedRoute>}/>
   <Route path="/signup" element={<Signup/>}/>
   <Route path='/dashboard' element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
+  <Route path="/profile" element={<Profile/>}/>
 </Routes>
     </Router>
    

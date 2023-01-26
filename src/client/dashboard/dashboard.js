@@ -3,6 +3,8 @@ import "./dasboard.css";
 import { Doughnut } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js';
+import Profile from "../container/profileView/profile";
+import { useState } from "react";
 
 
 Chart.register(...registerables);
@@ -35,7 +37,12 @@ const data1 = {
     tension: 0.1
   }]
 };
+const [profile,setProfile]=useState(false);
 
+const handleClick=()=>{
+    setProfile(!profile);
+}
+console.log(profile);
     return(
 <>
 <div className="container-expense">
@@ -47,9 +54,12 @@ const data1 = {
             <input type="text" placeholder="search here"></input>
             <label for="search"><i className="fas fa-search"></i></label>
         </div>
-        <div className="user">
-            <img src="./a1.png"></img>
+        <div className="user" onClick={handleClick}>
+        <i class="fas fa-user" onClick={()=>{
+            Profile(true);
+           }}></i>
         </div>
+        {profile && <Profile setProfile={setProfile}/>}
     </div>
   
     <div className="sidebar">
