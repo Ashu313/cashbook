@@ -8,7 +8,7 @@ const AddIncome=()=>{
 
     <section className="content">
         <div className="expense-detail">
-            <h1 style={{textAlign:'center'}}>ADD EXPENSE DATA</h1>
+            <h1 style={{textAlign:'center'}}>ADD INCOME DATA</h1>
             <div className="expense-dashboard">
                 <input type="text" placeholder="enter title"></input>
             </div>
@@ -19,7 +19,7 @@ const AddIncome=()=>{
                 <input type="number" placeholder="enter number"></input>
             </div>
             <div className="add-button">
-                <button type="submit">Record Expense</button>
+                <button type="submit">Record Income</button>
             </div>
         </div>
     </section>

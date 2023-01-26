@@ -37,7 +37,7 @@ height: 100%;
 }
 .wrapper,
 .wrapper .img-area,
-.social-icons a,
+.wrapper .social-icons a,
 .buttons button{
 background-color:black;
 border-radius: 10px;
@@ -70,13 +70,13 @@ box-shadow: 0 0 40px rgba(8,7,16,0.6);
         background-color: orange;
         font-size: 20px;
     }
-    .social-icons{
+    .wrapper .social-icons{
         margin-top: 10px;
         display: inline-flex;
         gap: 1.5rem;
 
     }
-    .social-icons i{
+    .wrapper .social-icons i{
         font-size: 30px;
         font-weight: 400;
         text-align: center;

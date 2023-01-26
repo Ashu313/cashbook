@@ -64,15 +64,24 @@ console.log(profile);
   
     <div className="sidebar">
         <ul>
-        <li><a href="#">
+        <li><a href="/dashboard">
             <i className="fas fa-th-large"
             ></i>Dashboard</a></li>
-             <li><a href="#">
+             <li><a href="wallet">
             <i className="fas fa-th-large"
             ></i>wallet</a></li>
-             <li><a href="#">
+             <li>
+                <a href="report">
             <i className="fas fa-th-large"
             ></i>Report</a></li>
+              <li>
+                <a href="/AddExpense">
+            <i className="fas fa-th-large"
+            ></i>Addexpense</a></li>
+              <li>
+                <a href="/AddIncome">
+            <i className="fas fa-th-large"
+            ></i>Add Income</a></li>
         </ul>
         </div>
         <div className="main">

@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 import "./profile.css";
 const Profile=({props})=>{
  
- 
+ const Logout=()=>{
+    const logout=localStorage.removeItem('userinfo');
+    console.log(logout);
+   {logout?<Navigate to='/login'/>:<Navigate to='/'></Navigate>}
     
+ }
     return(
 <>
  <div className={props?"wrapper":"wrapper active"}>
@@ -25,7 +30,7 @@ const Profile=({props})=>{
 
  </div>
  <div class="buttons">
-   <button>LOGOUT</button>
+   <a href=""><button onClick={Logout}>LOGOUT</button></a>
    <button>Settings</button>
  </div>
  </div>

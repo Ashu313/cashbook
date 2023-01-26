@@ -50,7 +50,7 @@ catch(error)
 
 }
 });
-const userloginfromlocalstorage=localStorage.getItem('userinfo')?JSON.parse(localStorage.getItem('userinfo')):undefined;
+const userloginfromlocalstorage=localStorage.getItem('userinfo')?JSON.parse(localStorage.getItem('userinfo')):null;
 const Userslices=createSlice({
     name:"users",
     initialState:{
