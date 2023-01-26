@@ -33,7 +33,7 @@ function App() {
   <Route path="/AddIncome" element={<ProtectedRoute><AddIncome/></ProtectedRoute>}/>
   <Route path="/signup" element={<Signup/>}/>
   <Route path='/dashboard' element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
-  <Route path="/profile" element={<Profile/>}/>
+  <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
 </Routes>
     </Router>
    
