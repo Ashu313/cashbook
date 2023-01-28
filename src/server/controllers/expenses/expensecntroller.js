@@ -4,6 +4,7 @@ const expressAsyncHandler=require('express-async-handler');
 
 const createExpense=expressAsyncHandler (async(req,res)=>{
     console.log(req.user);
+    console.log('babe');
     const {title,amount,description,user}=req.body;
     try{
         const expense=await Expenses.create({
@@ -11,6 +12,7 @@ const createExpense=expressAsyncHandler (async(req,res)=>{
           description,
           amount,
           user:req?.user?._id
+          //user,
         });
         res.json(expense);
     }
