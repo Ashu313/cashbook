@@ -9,12 +9,12 @@ import axios from "axios";
 //reject with value mtlb ki response aayega wo user friendly response hoga
 export const CreateExpense=createAsyncThunk("expense/create",async(payload,{rejectWithValue,getState,dispatch})=>{
 
-    const Usertoken=getState()?.users?.userAuth?.token;
-    console.log(Usertoken);
+    const userToken=getState()?.users?.userAuth?.token;
+    console.log(userToken);
     const config={
         headers:{
             "content-type":"application/json",
-            "Authorisation":`Bearer${Usertoken}`
+            Authorisation:`Bearer${userToken}`
         }
     }
 try{
