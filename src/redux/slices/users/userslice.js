@@ -50,6 +50,59 @@ catch(error)
 
 }
 });
+export const UserProfile=createAsyncThunk("users/profile",async(id,{rejectWithValue,getState,dispatch})=>{
+
+    const userToken=getState()?.users?.userAuth?.token;
+    console.log(userToken);
+    const config={
+        headers:{
+            "content-type":"application/json",
+            Authorization:`Bearer ${userToken}`
+        }
+    }
+try{
+    const {data}=await axios.get('http://localhost:5000/api/users/profile',config)
+    return data;
+}
+catch(error)
+{
+    console.log('pussy');
+ if(!error?.response)
+ {
+    throw error;
+ }
+ return rejectWithValue(error?.respone?.data);
+
+}
+});
+export const UpdateProfile=createAsyncThunk("users/update",async(payload,{rejectWithValue,getState,dispatch})=>{
+
+    const userToken=getState()?.users?.userAuth?.token;
+    const config={
+        headers:{
+            "content-type":"application/json",
+            Authorization:`Bearer ${userToken}`
+        }
+    }
+try{
+    const {data}=await axios.put('http://localhost:5000/api/users/profile',
+    {
+        firstname:payload?.firstname,
+        email:payload?.email,
+    },
+    config)
+    return data;
+}
+catch(error)
+{
+ if(!error?.response)
+ {
+    throw error;
+ }
+ return rejectWithValue(error?.respone?.data);
+
+}
+});
 const userloginfromlocalstorage=localStorage.getItem('userinfo')?JSON.parse(localStorage.getItem('userinfo')):null;
 const Userslices=createSlice({
     name:"users",
@@ -113,8 +166,53 @@ state.userAppErr=undefined;
 
 
 })
+builder.addCase(UserProfile.rejected,(state,action)=>{
+    state.userLoading=false;
+    state.userServerErr=action?.payload?.msg;
+    state.userAppErr=action?.payload?.msg;
 
 
+})
+builder.addCase(UserProfile.pending,(state,action)=>{
+    state.Loading=true;
+    state.ServerErr=undefined;
+    state.AppErr=undefined;
+
+
+
+})
+builder.addCase(UserProfile.fulfilled,(state,action)=>{
+state.Profile=action?.payload;
+state.Loading=false;
+state.ServerErr=undefined;
+state.AppErr=undefined;
+
+
+})
+
+builder.addCase(UpdateProfile.rejected,(state,action)=>{
+    state.Loading=false;
+    state.ServerErr=action?.payload?.msg;
+    state.AppErr=action?.payload?.msg;
+
+
+})
+builder.addCase(UpdateProfile.pending,(state,action)=>{
+    state.userLoading=true;
+    state.userServerErr=undefined;
+    state.userAppErr=undefined;
+
+
+
+})
+builder.addCase(UpdateProfile.fulfilled,(state,action)=>{
+state.UserUpdate=action?.payload;
+state.userLoading=false;
+state.userServerErr=undefined;
+state.userAppErr=undefined;
+
+
+})
 }
 
 });

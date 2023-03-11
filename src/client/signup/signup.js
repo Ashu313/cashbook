@@ -4,6 +4,9 @@ import { Formik, useFormik } from 'formik';
 import *as yup from 'yup'
 import { useDispatch } from 'react-redux';
 import { RegisterAction } from '../../redux/slices/users/userslice';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 
 const formSchema=yup.object({
@@ -15,6 +18,9 @@ const Signup=()=>
 {
 
 	const dispatch=useDispatch();
+	const user=useSelector(state=>state?.users)
+	const {userAppErr,userServerErr,userloading,userAuth}=user;
+
 	 const formik=useFormik({
 		initialValues:{
 			firstname:"",
@@ -38,6 +44,13 @@ const Signup=()=>
 			return errors;
 		}
 	 })
+	 const Navigate=useNavigate();
+	 useEffect(()=>{
+		 if(userAuth)
+		 {
+		  return Navigate('/dashboard');
+		 }
+	 },[userAuth])
     return(
         <>
         <div class="container">

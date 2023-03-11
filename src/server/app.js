@@ -8,6 +8,7 @@ const errorHandler = require('./middlewares/middlewares');
 const expenseRoute = require('./routes/expense/expenseRoute');
 const incomeRoute = require('./routes/income/incomeroutes');
 const userRoute = require('./routes/user/userroute');
+const AccountStats = require('./controllers/AccountStats/accountStats');
 
 app.use(express.json());
  app.use(cors());
@@ -22,6 +23,7 @@ app.use('/api/users',userRoute);
 //income routes
 app.use('/api/income',incomeRoute);
 app.use('/api/expense',expenseRoute);
+app.use('/api/status',AccountStats);
 app.use(errorHandler);
 
 

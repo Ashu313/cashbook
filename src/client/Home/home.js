@@ -1,4 +1,5 @@
 import React from "react";
+import ViewExpense from "../viewExpense/viewExpense";
 import "./home.css";
 
 const Home=()=>{
@@ -40,6 +41,7 @@ const Home=()=>{
             </div>
     </div>
         </section>
+         <ViewExpense/>
         </>
     )
 }

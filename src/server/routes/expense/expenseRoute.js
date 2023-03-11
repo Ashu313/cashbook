@@ -1,14 +1,14 @@
 
 const express=require('express');
 const {createExpense,fetchExpense,fetchSingleUser,updateExpense,deleteUser}=require('../../controllers/expenses/expensecntroller');
- 
+ const authmiddlewares=require("../../middlewares/authmiddlewares")
 
 const expenseRoute=express.Router();
-expenseRoute.post('/',createExpense);
-expenseRoute.get('/',fetchExpense);
-expenseRoute.get('/:id',fetchSingleUser);
-expenseRoute.put('/:id',updateExpense);
-expenseRoute.delete('/:id',deleteUser);
+expenseRoute.post('/',authmiddlewares,createExpense);
+expenseRoute.get('/',authmiddlewares,fetchExpense);
+expenseRoute.get('/:id',authmiddlewares,fetchSingleUser);
+expenseRoute.put('/:id',authmiddlewares,updateExpense);
+expenseRoute.delete('/:id',authmiddlewares,deleteUser);
 
 
 

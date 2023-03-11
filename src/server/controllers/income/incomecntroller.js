@@ -1,9 +1,11 @@
  
 const expressAsyncHandler=require('express-async-handler');
-const Income = require('../../model/income');
+ const Income=require("../../model/income")
 
 const createIncome=expressAsyncHandler (async(req,res)=>{
-    const {title,amount,description,user}=req.body;
+    console.log(req.user);
+    const {title,amount,description}=req.body;
+    console.log(req.user);
     console.log(req.user);
     try{
         const income=await Income.create({

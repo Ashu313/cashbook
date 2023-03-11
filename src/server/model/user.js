@@ -23,9 +23,28 @@ const userSchema=mongoose.Schema({
     }
 },
 {
-    timestamp:true,
-}
+    toJSON: {
+      virtuals: true,
+    },
+    toObject: {
+      virtuals: true,
+    },
+    timestamps: true,
+  }
 )
+//virtual method to populate created post
+userSchema.virtual("expenses", {
+    ref: "Expenses",
+    foreignField: "user",
+    localField: "_id",
+  });
+  
+  //virtual method to populate created post
+  userSchema.virtual("Income", {
+    ref: "Income",
+    foreignField: "user",
+    localField: "_id",
+  });
 //hashpassword
 userSchema.pre("save",async function(next){
 

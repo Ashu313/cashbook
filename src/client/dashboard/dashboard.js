@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./dasboard.css";
 import { Doughnut } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js';
 import Profile from "../container/profileView/profile";
 import { useState } from "react";
+import AddExpense from "../expenseTable/expense";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllAccount } from "../../redux/slices/accountDetail/account";
 
 
 Chart.register(...registerables);
@@ -43,6 +46,14 @@ const handleClick=()=>{
     setProfile(!profile);
 }
 console.log(profile);
+const dispatch=useDispatch();
+useEffect(()=>
+    {
+        dispatch(fetchAllAccount())
+
+},[dispatch])
+const account=useSelector(state=>state?.account);
+console.log(account);
     return(
 <>
 <div className="container-expense">
@@ -74,14 +85,21 @@ console.log(profile);
                 <a href="report">
             <i className="fas fa-th-large"
             ></i>Report</a></li>
-              <li>
+              <li >
                 <a href="/AddExpense">
             <i className="fas fa-th-large"
-            ></i>Addexpense</a></li>
+            ></i>Addexpense</a>
+         
+            </li>
               <li>
                 <a href="/AddIncome">
             <i className="fas fa-th-large"
             ></i>Add Income</a></li>
+             <li>
+                <a href="/viewExpense">
+            <i className="fas fa-th-large"
+            ></i>Add Income</a></li>
+            
         </ul>
         </div>
         <div className="main">
@@ -90,24 +108,28 @@ console.log(profile);
                     <div className="card-content">
                         <div className="number">1000$</div>
                         <div className="card-name">expenses</div>
+                    
                     </div>
                     <div className="icon-box">
                         <i className="fas fa-user-graduate"></i>
                     </div>
+                    <button type="button" >View Expense</button>
                 </div>
                    <div className="card">
                     <div className="card-content">
                         <div className="number">1000$</div>
-                        <div className="card-name">expenses</div>
+                        <div className="card-name">income</div>
+                     
                     </div>
                     <div className="icon-box">
                         <i className="fas fa-user-graduate"></i>
                     </div>
+                    <button type="button">View Income</button>
                 </div>
                    <div className="card">
                     <div className="card-content">
                         <div className="number">1000$</div>
-                        <div className="card-name">expenses</div>
+                        <div className="card-name">TotalPrice</div>
                     </div>
                     <div className="icon-box">
                         <i className="fas fa-user-graduate"></i>

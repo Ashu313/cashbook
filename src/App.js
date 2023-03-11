@@ -16,6 +16,7 @@ import Navbar from './client/container/Navbar/Navbar';
 import ProtectedRoute from './client/container/Navbar/protected';
 import { useSelector } from 'react-redux';
 import Profile from './client/container/profileView/profile';
+import ViewExpense from './client/viewExpense/viewExpense';
 //use selector select the element from the redux tool kit or from store
 function App() {
   
@@ -24,8 +25,9 @@ function App() {
     <Router>
 {/*<Navbar/>*/}
 
+{/*
 {useSelector(state=>state?.users?.userAuth)?<Dashboard/>:<Navbar/>}
-{/*{useSelector(state=>state?.users?.userAuth)?<Dashboard/>:<Home/>}*/}
+{useSelector(state=>state?.users?.userAuth)?<Dashboard/>:<Home/>}*/}
 <Routes>
 <Route path="/" element={useSelector(state=>state?.users?.userAuth)?<Dashboard/>:<Home/>}/>
   <Route path="/login" element={<Login></Login>}/>
@@ -34,6 +36,8 @@ function App() {
   <Route path="/signup" element={<Signup/>}/>
   <Route path='/dashboard' element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
   <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
+  <Route path='/viewexpense' element={<ProtectedRoute><ViewExpense/></ProtectedRoute>}/>
+  <Route path='/seeexpense' element={<ViewExpense/>}/>
 </Routes>
     </Router>
    

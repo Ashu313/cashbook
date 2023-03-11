@@ -4,7 +4,10 @@ import { Formik } from "formik";
 import { useFormik } from "formik";
 import * as yup from 'yup';
 import { CreateExpense } from "../../redux/slices/expense/expense";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
+
 
 const formSchema=yup.object({
 	title:yup.string().required('title is required'),
@@ -15,6 +18,10 @@ const formSchema=yup.object({
 
 const AddExpense=()=>{
     const dispatch=useDispatch();
+  const expenses=useSelector(state=>state?.expense);
+  console.log(expenses)
+  const { expLoading, expAppErr, expServerErr, isExpCreated } = expenses;
+  console.log(expenses);
     const formik=useFormik({
 		initialValues:{
 		title:"",
@@ -32,6 +39,11 @@ const AddExpense=()=>{
 		
 		
 	})
+    useEffect(() => {
+        if (isExpCreated) {
+          Navigate("user-profile-expenses", undefined);
+        }
+      }, [isExpCreated]); 
     return(
 
     <section className="content">

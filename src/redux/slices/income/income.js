@@ -7,7 +7,7 @@ import axios from "axios";
 
 
 //reject with value mtlb ki response aayega wo user friendly response hoga
-export const CreateExpense=createAsyncThunk("expense/create",async(Expenses,{rejectWithValue,getState,dispatch})=>{
+export const createIncome=createAsyncThunk("income/create",async(payload,{rejectWithValue,getState,dispatch})=>{
 
     const userToken=getState()?.users?.userAuth?.token;
     console.log(userToken);
@@ -19,11 +19,11 @@ export const CreateExpense=createAsyncThunk("expense/create",async(Expenses,{rej
         }
     }
 try{
-    const {data}=await axios.post('http://localhost:5000/api/expense',
+    const {data}=await axios.post('http://localhost:5000/api/income',
     {
-        title:Expenses?.title,
-        description:Expenses?.description,
-        amount:Expenses?.amount,
+        title:payload?.title,
+        description:payload?.description,
+        amount:payload?.amount,
 
     },config)
     return data;
@@ -38,7 +38,7 @@ catch(error)
 
 }
 });
-export const fetchAllExpense=createAsyncThunk("expense/fetch",async(payload,{rejectWithValue,getState,dispatch})=>{
+export const fetchAllIncome=createAsyncThunk("income/fetch",async(payload,{rejectWithValue,getState,dispatch})=>{
 
     const userToken=getState()?.users?.userAuth?.token;
     console.log(userToken);
@@ -50,7 +50,7 @@ export const fetchAllExpense=createAsyncThunk("expense/fetch",async(payload,{rej
         }
     }
 try{
-    const {data}=await axios.get(`http://localhost:5000/api/expense?page=${payload}`,payload,config)
+    const {data}=await axios.get(`http://localhost:5000/api/income?page=${payload}`,payload,config)
     return data;
 }
 catch(error)
@@ -63,21 +63,21 @@ catch(error)
 
 }
 });
-const expenseSlice=createSlice({
-    name:"expense",
+const incomeSlice=createSlice({
+    name:"income",
     initialState:{},
     //builder 3 choice handle krta hai 
     //1.fulfiled 2.reject 3.pending state
     extraReducers:builder=>{
 
-builder.addCase(CreateExpense.rejected,(state,action)=>{
+builder.addCase(createIncome.rejected,(state,action)=>{
     state.userLoading=false;
     state.userServerErr=action?.payload?.msg;
     state.userAppErr=undefined;
 
 
 })
-builder.addCase(CreateExpense.pending,(state,action)=>{
+builder.addCase(createIncome.pending,(state,action)=>{
     state.userLoading=true;
     state.userServerErr=undefined;
     state.userAppErr=undefined;
@@ -85,22 +85,22 @@ builder.addCase(CreateExpense.pending,(state,action)=>{
 
 
 })
-builder.addCase(CreateExpense.fulfilled,(state,action)=>{
-state.expenseCreated=action?.payload;
+builder.addCase(createIncome.fulfilled,(state,action)=>{
+state.IncCreated=action?.payload;
 state.userLoading=false;
 state.userServerErr=undefined;
 state.userAppErr=undefined;
 
 
 })
-builder.addCase(fetchAllExpense.rejected,(state,action)=>{
+builder.addCase(fetchAllIncome.rejected,(state,action)=>{
     state.userLoading=false;
     state.userServerErr=action?.payload?.msg;
     state.userAppErr=undefined;
 
 
 })
-builder.addCase(fetchAllExpense.pending,(state,action)=>{
+builder.addCase(fetchAllIncome.pending,(state,action)=>{
     state.userLoading=true;
     state.userServerErr=undefined;
     state.userAppErr=undefined;
@@ -108,8 +108,8 @@ builder.addCase(fetchAllExpense.pending,(state,action)=>{
 
 
 })
-builder.addCase(fetchAllExpense.fulfilled,(state,action)=>{
-state.expenseList=action?.payload;
+builder.addCase(fetchAllIncome.fulfilled,(state,action)=>{
+state.incomeList=action?.payload;
 state.userLoading=false;
 state.userServerErr=undefined;
 state.userAppErr=undefined;
@@ -121,4 +121,4 @@ state.userAppErr=undefined;
 
 });
 
-export default expenseSlice.reducer
+export default incomeSlice.reducer

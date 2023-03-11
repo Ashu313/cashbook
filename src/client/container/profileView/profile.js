@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 import "./profile.css";
+import { useDispatch,useSelector } from "react-redux";
+import { UserProfile } from "../../../redux/slices/users/userslice";
 const Profile=({props})=>{
  
  const Logout=()=>{
@@ -10,6 +12,13 @@ const Profile=({props})=>{
    {logout?<Navigate to='/login'/>:<Navigate to='/'></Navigate>}
     
  }
+ const dispatch=useDispatch();
+ useEffect(()=>{
+dispatch(UserProfile());
+ },[dispatch])
+ const state=useSelector(state=>state.users);
+ const{profile}=state;
+ console.log(profile);
     return(
 <>
  <div className={props?"wrapper":"wrapper active"}>

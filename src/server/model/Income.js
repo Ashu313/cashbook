@@ -12,6 +12,11 @@ const IncomeSchema=mongoose.Schema({
         required:[true,'description name is require'],
         type:String
     },
+    type: {
+        type: String,
+        default:"income",
+      },
+
     
     amount:{
     

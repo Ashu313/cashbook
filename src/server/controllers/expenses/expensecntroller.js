@@ -1,17 +1,22 @@
 const Expenses=require('../../model/expenses');
 const expressAsyncHandler=require('express-async-handler');
-
-
+ 
 const createExpense=expressAsyncHandler (async(req,res)=>{
+   
+    
+    const {title,amount,description}=req.body;
     console.log(req.user);
-    console.log('babe');
-    const {title,amount,description,user}=req.body;
+    const {id}=req?.params;
+    console.log(id);
+    
+ 
     try{
         const expense=await Expenses.create({
           title,
           description,
           amount,
-          user:req?.user?._id
+         
+          user:req?.user?._id,
           //user,
         });
         res.json(expense);
@@ -51,7 +56,7 @@ const  updateExpense=expressAsyncHandler (async(req,res)=>{
     const {id}=req?.params;
     const {title,amount,description}=req.body;
         try{
-            const income=await Income.findByIdAndUpdate(id,{
+            const income=await Expenses.findByIdAndUpdate(id,{
                 title,amount,description,
 
             },{

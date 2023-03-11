@@ -1,6 +1,7 @@
  
 const mongoose=require('mongoose');
 const mongoosePaginate=require('mongoose-paginate-v2');
+const User=require('./user');
 
 const expensesSchema=mongoose.Schema({
     
@@ -9,6 +10,10 @@ const expensesSchema=mongoose.Schema({
         required:[true,'first name is require'],
         type:String,
     },
+    type: {
+        type: String,
+        default: "expense",
+      },
     description:{
         required:[true,'description name is require'],
         type:String
@@ -19,11 +24,20 @@ const expensesSchema=mongoose.Schema({
         required:[true,'amount  is require'],
         type:Number
     },
-    user:{
+ user:{
 
        type:mongoose.Schema.Types.ObjectId,
+      // type:String,
        ref:"User",
-       required:[true,'user id is required'],
+       required:true,
+       validate: {
+        validator: function(value) {
+          // check if value is a valid ObjectId
+          return mongoose.Types.ObjectId.isValid(value);
+        },
+        message: "Invalid user id"
+      }
+       //required:[true,'user id is required'],
     }
 },
 {

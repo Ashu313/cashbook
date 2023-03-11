@@ -36,9 +36,37 @@ const fetchUser=expressAsyncHandler(async(req,res)=>{
     }catch(err)
     {
         res.json(err);
-        console.log('pussy');
+       
     }
 }); 
+const userProfileCtrl = expressAsyncHandler(async (req, res) => {
+    const { _id } = req?.user;
+  
+    try {
+      const myProfile = await User.findById(_id).populate(["expenses", "income"]);
+  
+      res.json(myProfile);
+    } catch (error) {
+      res.json(error);
+    }
+  });
+  const updateUserCtrl = expressAsyncHandler(async (req, res) => {
+    const { _id } = req?.user;
+   
+    const user = await User.findByIdAndUpdate(
+      _id,
+      {
+        firstname: req?.body?.firstname,
+        lastname: req?.body?.lastname,
+        email: req?.body?.email,
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    res.json(user);
+  });
 //login check;
 const loginCredentials=expressAsyncHandler(async(req,res)=>{
 const{email,password}=req?.body;
@@ -69,6 +97,6 @@ throw new Error('invalid login credintals');
 
 });
 
-module.exports={registerUser,fetchUser,loginCredentials};
+module.exports={registerUser,fetchUser,loginCredentials,userProfileCtrl,updateUserCtrl};
 //module.exports=fetchUser; 
 //module.exports=LoginCredentials ;
