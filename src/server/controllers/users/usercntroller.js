@@ -41,9 +41,10 @@ const fetchUser=expressAsyncHandler(async(req,res)=>{
 }); 
 const userProfileCtrl = expressAsyncHandler(async (req, res) => {
     const { _id } = req?.user;
+    console.log(_id);
   
     try {
-      const myProfile = await User.findById(_id).populate(["expenses", "income"]);
+      const myProfile = await User.findById(req?.user?._id).populate("expenses").populate("incomes");
   
       res.json(myProfile);
     } catch (error) {

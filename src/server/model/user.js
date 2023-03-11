@@ -40,8 +40,9 @@ userSchema.virtual("expenses", {
   });
   
   //virtual method to populate created post
-  userSchema.virtual("Income", {
-    ref: "Income",
+  //iska mtlb ki user ek mandatory fields hai jisko hmko refernce dena hai income wale me
+  userSchema.virtual("incomes", {
+    ref: "Income", //ye refernce hai 
     foreignField: "user",
     localField: "_id",
   });
