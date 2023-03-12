@@ -30,7 +30,7 @@ const createExpense=expressAsyncHandler (async(req,res)=>{
 const fetchExpense=expressAsyncHandler (async(req,res)=>{
     const {page}=req.query;
     try{
-        const income=await Expenses.paginate({},{limit:1,page:Number(page),populate:"user" })
+        const income=await Expenses.paginate({},{limit:2,page:Number(page),populate:"user" })
        
         res.json(income);
     }

@@ -8,6 +8,9 @@ const ExpenseTable=({items})=>{
       <td>{items?.title}</td>
       <td>{items?.description}</td>
       <td>{items?.amount}</td>
+      <td>{items?.amount}</td>
+      <td>{items?.amount}</td>
+    
     </tr>
     
         </>

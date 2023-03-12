@@ -5,7 +5,7 @@ import axios from "axios";
 
 //reject with value mtlb ki response aayega wo user friendly response hoga
 
-
+ 
 //reject with value mtlb ki response aayega wo user friendly response hoga
 export const CreateExpense=createAsyncThunk("expense/create",async(Expenses,{rejectWithValue,getState,dispatch})=>{
 
@@ -38,8 +38,9 @@ catch(error)
 
 }
 });
-export const fetchAllExpense=createAsyncThunk("expense/fetch",async(payload,{rejectWithValue,getState,dispatch})=>{
-
+export const fetchAllExpense=createAsyncThunk("expense/fetch",async(page,{rejectWithValue,getState,dispatch})=>{
+   
+     
     const userToken=getState()?.users?.userAuth?.token;
     console.log(userToken);
     console.log('help');
@@ -49,8 +50,9 @@ export const fetchAllExpense=createAsyncThunk("expense/fetch",async(payload,{rej
             Authorization:`Bearer ${userToken}`
         }
     }
+   
 try{
-    const {data}=await axios.get(`http://localhost:5000/api/expense?page=${payload}`,payload,config)
+    const {data}=await axios.get(`http://localhost:5000/api/expense?page=${page}`,config)
     return data;
 }
 catch(error)
@@ -59,7 +61,9 @@ catch(error)
  {
     throw error;
  }
+ 
  return rejectWithValue(error?.respone?.data);
+ 
 
 }
 });
@@ -94,25 +98,25 @@ state.userAppErr=undefined;
 
 })
 builder.addCase(fetchAllExpense.rejected,(state,action)=>{
-    state.userLoading=false;
-    state.userServerErr=action?.payload?.msg;
-    state.userAppErr=undefined;
+    state.expLoading=false;
+    state.expServerErr=action?.payload?.msg;
+    state.expAppErr=undefined;
 
 
 })
 builder.addCase(fetchAllExpense.pending,(state,action)=>{
-    state.userLoading=true;
-    state.userServerErr=undefined;
-    state.userAppErr=undefined;
+    state.expLoading=true;
+    state.expServerErr=undefined;
+    state.expAppErr=undefined;
 
 
 
 })
 builder.addCase(fetchAllExpense.fulfilled,(state,action)=>{
 state.expenseList=action?.payload;
-state.userLoading=false;
-state.userServerErr=undefined;
-state.userAppErr=undefined;
+state.expLoading=false;
+state.expServerErr=undefined;
+state.expAppErr=undefined;
 
 
 })

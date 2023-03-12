@@ -43,6 +43,7 @@ useEffect(()=>
         dispatch(fetchAllAccount())
 
 },[dispatch])
+
 const state=useSelector(state=>state?.users);
 const {Profile}=state;
 console.log(Profile);
