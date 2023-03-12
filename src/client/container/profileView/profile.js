@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 import "./profile.css";
 import { useDispatch,useSelector } from "react-redux";
 import { UserProfile } from "../../../redux/slices/users/userslice";
-const Profile=({props})=>{
+const Profile1=({props})=>{
  
  const Logout=()=>{
     const logout=localStorage.removeItem('userinfo');
@@ -17,8 +17,8 @@ const Profile=({props})=>{
 dispatch(UserProfile());
  },[dispatch])
  const state=useSelector(state=>state.users);
- const{profile}=state;
- console.log(profile);
+ const{Profile}=state;
+ console.log(Profile);
     return(
 <>
  <div className={props?"wrapper":"wrapper active"}>
@@ -28,8 +28,8 @@ dispatch(UserProfile());
    </div>
  </div>
 
-    <div className="name">Ashutosh Kumar</div>
-    <div className="about">Freelancer</div>
+    <div className="name">{Profile?.firstname}</div>
+    <div className="about">{Profile?.email}</div>
  
  <div class="social-icons">
     <a href="#" class="gl"><i class="fab fa-youtube"></i></a>
@@ -46,4 +46,4 @@ dispatch(UserProfile());
 </>
     )
 }
-export default Profile;
+export default Profile1;

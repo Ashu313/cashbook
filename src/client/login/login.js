@@ -17,6 +17,7 @@ const Login=()=>
 
 	const dispatch=useDispatch();
 	const user=useSelector(state=>state?.users)
+	console.log(user);
 	const {userAppErr,userServerErr,userloading,userAuth}=user;
 
 	const formik=useFormik({
@@ -49,7 +50,8 @@ const Login=()=>
 	useEffect(()=>{
 		if(userAuth)
 		{
-         return Navigate('/dashboard');
+        
+			return Navigate('/Dashboard');
 		}
 	},[userAuth])
 	//console.log(formik);

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./dasboard.css";
+import "./AdminDashboard.css";
 import { Doughnut } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js';
@@ -8,14 +8,27 @@ import { useState } from "react";
 import AddExpense from "../expenseTable/expense";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllAccount } from "../../redux/slices/accountDetail/account";
-import { UserProfile } from "../../redux/slices/users/userslice";
-import Profile1 from "../container/profileView/profile";
-
-
 
 
 Chart.register(...registerables);
-const Dashboard=()=>{
+const AdminDashboard1=()=>{
+var data = {
+  labels: [
+    'Red',
+    'Blue',
+    'Yellow'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
 
 const data1 = {
   labels: ['january','february','march','april','may','june','july','august','september','october','november','december'],
@@ -34,53 +47,13 @@ const handleClick=()=>{
 }
 console.log(profile);
 const dispatch=useDispatch();
-useEffect(()=>{
-    dispatch(UserProfile()); 
- },[dispatch]);
-
 useEffect(()=>
     {
         dispatch(fetchAllAccount())
 
 },[dispatch])
-const state=useSelector(state=>state?.users);
-const {Profile}=state;
-console.log(Profile);
 const account=useSelector(state=>state?.account);
 console.log(account);
-//console.log(profile);
-const totalincome=Profile?.incomes?.reduce((acc,curr)=>{
-   
-    return acc+Number(curr?.amount)
-},0)
-const totalExpenses=Profile?.expenses?.reduce((acc,curr)=>{
-    return acc+Number(curr?.amount)
-},0)
-//const account=useSelector(state=>state?.account);
-//console.log(account);
-console.log({totalExpenses,totalincome})
-
-var data = {
-    labels: [
-      'Income',
-      'Expenses',
-      'totalincome'
-      
-    ],
-    datasets: [{
-      label: '# expenses',
-      data: [totalExpenses,totalincome,totalincome+totalExpenses],
-      backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
-      ],
-      hoverOffset: 4
-    }]
-  };
-
-
-
     return(
 <>
 <div className="container-expense">
@@ -94,10 +67,10 @@ var data = {
         </div>
         <div className="user" onClick={handleClick}>
         <i class="fas fa-user" onClick={()=>{
-            profile(true);
+            Profile(true);
            }}></i>
         </div>
-        {profile && <Profile1 setProfile={setProfile}/>}
+        {profile && <Profile setProfile={setProfile}/>}
     </div>
   
     <div className="sidebar">
@@ -133,18 +106,18 @@ var data = {
             <div className="cards">
                 <div className="card">
                     <div className="card-content">
-                        <div className="number">{totalExpenses}</div>
+                        <div className="number">1000$</div>
                         <div className="card-name">expenses</div>
                     
                     </div>
                     <div className="icon-box">
                         <i className="fas fa-user-graduate"></i>
                     </div>
-                    <a href="/seeexpense"><button type="button" >View Expense</button></a>
+                    <button type="button" >View Expense</button>
                 </div>
                    <div className="card">
                     <div className="card-content">
-                        <div className="number">{totalincome}</div>
+                        <div className="number">1000$</div>
                         <div className="card-name">income</div>
                      
                     </div>
@@ -155,7 +128,7 @@ var data = {
                 </div>
                    <div className="card">
                     <div className="card-content">
-                        <div className="number">{totalExpenses+totalincome}</div>
+                        <div className="number">1000$</div>
                         <div className="card-name">TotalPrice</div>
                     </div>
                     <div className="icon-box">
@@ -183,9 +156,8 @@ var data = {
                   <div className="chart">
                     <h2>Earning expenses</h2>
                     <div>
-                        <Doughnut data={data}
-                        />
-                        
+                        <Doughnut
+                        data={data}/>
                     </div>
                 </div>
                  
@@ -199,4 +171,4 @@ var data = {
 </>
     )
 }
-export default Dashboard;
+export default AdminDashboard1;
