@@ -42,7 +42,7 @@ console.log(income);
     <>
     
     <nav>
-    <a href='/'><button>Dashbaord</button></a>
+    <a href='/'><button style={{position:'initial'}}>Dashbaord</button></a>
     </nav>
     <div className="table-content">
       <h1 style={{textDecoration:'none',textAlign:'center'}}> HELLO ! {Profile?.firstname}</h1>
