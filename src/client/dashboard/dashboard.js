@@ -113,20 +113,9 @@ var data = {
                 <a href="report">
             <i className="fas fa-th-large"
             ></i>Report</a></li>
-              <li >
-                <a href="/AddExpense">
-            <i className="fas fa-th-large"
-            ></i>Addexpense</a>
-         
-            </li>
-              <li>
-                <a href="/AddIncome">
-            <i className="fas fa-th-large"
-            ></i>Add Income</a></li>
-             <li>
-                <a href="/viewExpense">
-            <i className="fas fa-th-large"
-            ></i>Add Income</a></li>
+              
+           
+            
             
         </ul>
         </div>
