@@ -50,7 +50,7 @@ export const fetchAllIncome=createAsyncThunk("income/fetch",async(payload,{rejec
         }
     }
 try{
-    const {data}=await axios.get(`http://localhost:5000/api/income?page=${payload}`,payload,config)
+    const {data}=await axios.get(`http://localhost:5000/api/income?page=${payload}`,config)
     return data;
 }
 catch(error)

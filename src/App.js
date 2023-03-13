@@ -20,6 +20,7 @@ import ViewExpense from './client/viewExpense/viewExpense';
 import AdminProtectedRoute from './client/container/Navbar/admin';
 import AdminDashboard from './client/AdminDashboard/AdminDashboard';
 import AdminDashboard1 from './client/AdminDashboard/AdminDashboard';
+import ViewIncome from './client/ViewIncome/viewIncome';
 //use selector select the element from the redux tool kit or from store
 function App() {
   
@@ -41,6 +42,7 @@ function App() {
   <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
   <Route path='/viewexpense' element={<ProtectedRoute><ViewExpense/></ProtectedRoute>}/>
   <Route path='/seeexpense' element={<ProtectedRoute><ViewExpense/></ProtectedRoute>}/>
+  <Route path='/seeincome' element={<ProtectedRoute><ViewIncome/></ProtectedRoute>}/>
   
 </Routes>
     </Router>

@@ -152,7 +152,7 @@ var data = {
                     <div className="icon-box">
                         <i className="fas fa-user-graduate"></i>
                     </div>
-                    <button type="button">View Income</button>
+                    <a href="/seeincome"><button type="button" >View Income</button></a>
                 </div>
                    <div className="card">
                     <div className="card-content">
