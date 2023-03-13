@@ -33,17 +33,17 @@ useEffect(()=>{
     
 
     <div className="table-content">
-      <h1 style={{textDecoration:'none'}}> HELLO ! {Profile?.firstname}</h1>
+      <h1 style={{textDecoration:'none',textAlign:'center'}}> HELLO ! {Profile?.firstname}</h1>
       <p style={{textAlign:'center'}}>This is your expenses</p>
     </div>
-    <table class="table" style={{backgroundColor:'white'}}>
+    <table class="table" style={{backgroundColor:'black',color:'white'}}>
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Title</th>
       <th scope="col">Description</th>
       <th scope="col">Amount</th>
-      <th scope="col">edit</th>
+      <th scope="col">Date</th>
+      <th scope="col">Edit</th>
       <th scope='col'>delete</th>
     </tr>
   </thead>
