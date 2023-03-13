@@ -62,12 +62,13 @@ img{
    
 }
 button{
-    background-color:orange;
+ 
+    background-color: orange;
     color: white;
-     
-    
-    padding: 1rem;
+    padding: 10px;
     cursor: pointer;
+    position: relative;
+    top: 10px;
 }
 button:hover{
     background-color: green;
