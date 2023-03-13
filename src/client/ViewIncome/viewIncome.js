@@ -41,7 +41,9 @@ console.log(income);
   return (
     <>
     
-
+    <nav>
+    <a href='/'><button>Dashbaord</button></a>
+    </nav>
     <div className="table-content">
       <h1 style={{textDecoration:'none',textAlign:'center'}}> HELLO ! {Profile?.firstname}</h1>
       <p style={{textAlign:'center'}}>Below is the List of all your incomes</p>

@@ -3,7 +3,7 @@ import "./expense.css";
 import { Formik } from "formik";
 import { useFormik } from "formik";
 import * as yup from 'yup';
-import { CreateExpense } from "../../redux/slices/expense/expense";
+import { CreateExpense, fetchAllExpense } from "../../redux/slices/expense/expense";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -29,11 +29,13 @@ const AddExpense=({ showIncomeBox, toggleIncomeBox })=>{
         amount:"",
         description:"",
 		},
-		onSubmit:values=>{
-            dispatch(CreateExpense(values))
+		onSubmit:async (values,{resetForm})=>{
+            await dispatch(CreateExpense(values))
 			console.log('sjs');
 			console.log(values);
-			
+            resetForm();
+			await dispatch(fetchAllExpense());
+            toggleIncomeBox(false);
 			 
 		},
 		validationSchema:formSchema,
