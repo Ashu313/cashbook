@@ -62,12 +62,15 @@ img{
    
 }
 button{
-    background-color: green;
+    background-color:orange;
     color: white;
-    font-size: 30px;
-    border-radius: 25px;
+     
+    
     padding: 1rem;
     cursor: pointer;
+}
+button:hover{
+    background-color: green;
 }
 .container-1-text{
     flex: 1 1 40rem;

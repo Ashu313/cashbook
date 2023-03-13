@@ -5,13 +5,19 @@ import { useDispatch,useSelector } from 'react-redux';
 import { UserProfile } from '../../redux/slices/users/userslice';
 import ExpenseTable from './userContent';
 import Pagination from './pagination';
+import AddExpense from '../expenseTable/expense';
 
 
 
 
 const ViewExpense=()=>
  {
+  const [showExpense,setShowExpense]=useState(false);
+  const toggleExpense=()=>{
+    setShowExpense(!showExpense)
+  }
   const[page,setPage]=useState(1);
+
   const dispatch=useDispatch();
   useEffect(()=>{
     dispatch(UserProfile());
@@ -36,7 +42,9 @@ useEffect(()=>{
       <h1 style={{textDecoration:'none',textAlign:'center'}}> HELLO ! {Profile?.firstname}</h1>
       <p style={{textAlign:'center'}}>This is your expenses</p>
     </div>
-    <table class="table" style={{backgroundColor:'black',color:'white'}}>
+    <button onClick={toggleExpense} >Add expense</button>
+    <AddExpense  showIncomeBox={showExpense} toggleIncomeBox={toggleExpense}/>
+    <table class="table" style={{backgroundColor:'black',color:'white',position:'relative'}}>
   <thead>
     <tr>
       <th scope="col">Title</th>

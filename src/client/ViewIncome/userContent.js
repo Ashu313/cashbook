@@ -8,7 +8,7 @@ const IncomeTable=({items})=>{
       
       <td>{items?.description}</td>
       <td>{items?.amount}</td>
-      <td>{items?.amount}</td>
+      <td>{items?.date.split("T")[0].split("-").reverse().join("-")} at {items?.date.split("T")[1].substring(0, 5)}</td>
 
       <td><button class="btn  btn-sm btn-success" >EDIT<i class="bi bi-pencil-square"></i></button></td>
       <td><button class="btn btn-sm btn-danger">DELETE<i class="bi bi-trash"></i></button></td>

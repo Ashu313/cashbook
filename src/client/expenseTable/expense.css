@@ -1,12 +1,17 @@
 .content{
     width: 580px;
     margin: 0 auto;
-    background-color:#0869A6;
+    background-color: #0869A6;
     padding: 3%;
     padding-left: 6%;
-   position: relative;
-   top: 200px;
+    position: absolute;
+    top: 200px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
 }
+ 
  
 .expense-dashboard input{
     padding: 10px;

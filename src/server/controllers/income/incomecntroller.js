@@ -25,7 +25,7 @@ const createIncome=expressAsyncHandler (async(req,res)=>{
 const fetchIncome=expressAsyncHandler (async(req,res)=>{
     const {page}=req.query;
     try{
-        const income=await Income.paginate({},{limit:1,page:Number(page),populate:"user"})
+        const income=await Income.paginate({},{limit:10,page:Number(page), sort:{ date: -1 },populate:"user"})
        
         res.json(income);
     }

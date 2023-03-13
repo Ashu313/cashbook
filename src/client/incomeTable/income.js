@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./income.css";
 
 
@@ -9,7 +9,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { useEffect } from "react";
-import { createIncome } from "../../redux/slices/income/income";
+import { createIncome, fetchAllIncome } from "../../redux/slices/income/income";
 
 
 const formSchema=yup.object({
@@ -20,7 +20,8 @@ const formSchema=yup.object({
 });
 
 
-const AddIncome=()=>{
+const AddIncome=({ showIncomeBox, toggleIncomeBox })=>{
+    const [inc,setIncome]=useState(false);
     const dispatch=useDispatch();
     const income=useSelector(state=>state?.income);
     console.log(income);
@@ -34,10 +35,14 @@ const AddIncome=()=>{
           amount:"",
           description:"",
           },
-          onSubmit:values=>{
-              dispatch(createIncome(values))
+          onSubmit:async(values,{resetForm})=>{
+              await dispatch(createIncome(values))
+              resetForm();
+              setIncome(showIncomeBox)
+              toggleIncomeBox(false);
               console.log('sjs');
               console.log(values);
+             await dispatch(fetchAllIncome());
               
                
           },
@@ -53,8 +58,10 @@ const AddIncome=()=>{
       }, [IncCreated]); 
   
     return(
-
-    <section className="content">
+<>
+   {showIncomeBox &&(
+    <>
+     <section className="content">
         <div className="expense-detail">
             <form onSubmit={formik.handleSubmit}>
             <h1 style={{textAlign:'center'}}>ADD INCOME DATA</h1>
@@ -68,12 +75,15 @@ const AddIncome=()=>{
                 <input type="number" placeholder="enter number" value={formik.values.amount} onChange={formik.handleChange('amount')} onBlur={formik.handleBlur('amount')}></input>
             </div>
             <div className="add-button">
-                <button type="submit">Record Income</button>
+                <button type='submit'  >Record Income</button>
             </div>
             </form>
         </div>
     </section>
-    )
+    </>
+   )}
+   </>
+   )
 }
 
 export default AddIncome;

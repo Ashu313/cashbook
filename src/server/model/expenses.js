@@ -38,7 +38,11 @@ const expensesSchema=mongoose.Schema({
         message: "Invalid user id"
       }
        //required:[true,'user id is required'],
-    }
+    },
+    date: {
+        type: Date, // add a new date field to the schema
+        default: Date.now(), // set the default value to the current date and time
+      },
 },
 {
     timestamp:true,

@@ -28,8 +28,13 @@ const IncomeSchema=mongoose.Schema({
        type:mongoose.Schema.Types.ObjectId,
        ref:"User",
        required:[true,'user id is required'],
-    }
+    },
+    date: {
+        type: Date, // add a new date field to the schema
+        default: Date.now(), // set the default value to the current date and time
+      },
 },
+
 {
     timestamp:true,
     toJSON:{
@@ -37,7 +42,8 @@ const IncomeSchema=mongoose.Schema({
     },
     toObject:{
        virtuals:true,
-    }
+    },
+    timestamps: true,
 },
 
 )

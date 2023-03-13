@@ -16,7 +16,8 @@ const formSchema=yup.object({
 
 });
 
-const AddExpense=()=>{
+const AddExpense=({ showIncomeBox, toggleIncomeBox })=>{
+ 
     const dispatch=useDispatch();
   const expenses=useSelector(state=>state?.expense);
   console.log(expenses)
@@ -45,8 +46,10 @@ const AddExpense=()=>{
         }
       }, [isExpCreated]); 
     return(
-
-    <section className="content">
+        <>
+         {showIncomeBox &&(
+    <>
+       <section className="content">
         <div className="expense-detail">
             <form onSubmit={formik.handleSubmit}>
             <h1 style={{textAlign:'center'}}>ADD EXPENSE DATA</h1>
@@ -66,6 +69,9 @@ const AddExpense=()=>{
             </form>
         </div>
     </section>
+    </>
+    )}
+        </>
     )
 }
 
