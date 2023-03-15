@@ -6,26 +6,38 @@ import { UserProfile } from '../../redux/slices/users/userslice';
 import ExpenseTable from './userContent';
 import Pagination from './pagination';
 import AddExpense from '../expenseTable/expense';
-
+import { EditExpense } from '../../redux/slices/expense/expense';
 
 
 
 const ViewExpense=()=>
  {
+  const[page,setPage]=useState(1);
+  const [openId, setOpenId] = useState(null);
   const [showExpense,setShowExpense]=useState(false);
+ 
   const toggleExpense=()=>{
     setShowExpense(!showExpense)
   }
-  const[page,setPage]=useState(1);
+
 
   const dispatch=useDispatch();
+ 
+
+
+
   useEffect(()=>{
     dispatch(UserProfile());
   },[dispatch]);
 
 useEffect(()=>{
-  dispatch(fetchAllExpense(page))
+  dispatch(fetchAllExpense(page));
 },[page]);
+useEffect(()=>{
+  dispatch(EditExpense());
+},[dispatch]);
+ 
+ 
   const state=useSelector(state=>state?.users);
   const {Profile}=state;
   console.log(state);
@@ -33,6 +45,9 @@ useEffect(()=>{
   const {expenseList}=expense;
   console.log(expense);
   console.log(expenseList?.docs);
+  const state1=useSelector(state=>state?.users);
+  const{expenseUpdated}=state1;
+  console.log(state);
  
   return (
     <>
@@ -64,7 +79,7 @@ useEffect(()=>{
                     ) :
     
       (expenseList?.docs?.map(exp=>(
-        <ExpenseTable items={exp} key={exp?.id}/>
+        <ExpenseTable items={exp} toggleIncomeBox={toggleExpense} key={exp?.id}/>
       ))
     )}
     </>

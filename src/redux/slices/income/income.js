@@ -38,6 +38,34 @@ catch(error)
 
 }
 });
+export const deleteIncomeAction = createAsyncThunk(
+    "income/delete",
+    async (id, { rejectWithValue, getState, dispatch }) => {
+      //get user token
+      const user = getState()?.users;
+      const { userAuth } = user;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userAuth?.token}`,
+        },
+      };
+      //http call
+      try {
+        const { data } = await axios.delete(
+          `http://localhost:5000/api/income/${id}`,
+          config
+        );
+        //dispatch
+      
+        return data;
+      } catch (error) {
+        if (!error.response) {
+          throw error;
+        }
+        return rejectWithValue(error?.response?.data);
+      }
+    }
+  );
 export const fetchAllIncome=createAsyncThunk("income/fetch",async(payload,{rejectWithValue,getState,dispatch})=>{
 
     const userToken=getState()?.users?.userAuth?.token;
@@ -116,6 +144,26 @@ state.userAppErr=undefined;
 
 
 })
+
+builder.addCase(deleteIncomeAction.pending, (state, action) => {
+    state.expLoading = true;
+    state.expAppErr = undefined;
+    state.expServerErr = undefined;
+  });
+ 
+  builder.addCase(deleteIncomeAction.fulfilled, (state, action) => {
+    state.expLoading = false;
+    state.isDeleted = false;
+    state.IncomeDeleted = action?.payload;
+    state.expAppErr = undefined;
+    state.expServerErr = undefined;
+    state.isExpCreated = false;
+  });
+  builder.addCase(deleteIncomeAction.rejected, (state, action) => {
+    state.expLoading = false;
+    state.expAppErr = action?.payload?.message;
+    state.expServerErr = action?.error?.message;
+  });
 
 }
 

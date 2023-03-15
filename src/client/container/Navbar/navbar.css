@@ -67,7 +67,7 @@ button{
     color: white;
     padding: 10px;
     cursor: pointer;
-    position: relative;
+    
     top: 10px;
 }
 button:hover{
