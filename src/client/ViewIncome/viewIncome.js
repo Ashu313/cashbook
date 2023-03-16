@@ -15,7 +15,7 @@ import AddIncome from '../incomeTable/income';
 
 const ViewIncome=()=>
  {
-  const[page,setPage]=useState(1);
+
   const [showIncomeBox, setShowIncomeBox] = useState(false);
 
   // Function to toggle the state of the Income box
@@ -28,16 +28,18 @@ const ViewIncome=()=>
     dispatch(UserProfile());
   },[dispatch]);
 
-useEffect(()=>{
-  dispatch(fetchAllIncome(page))
-},[page]);
+
   const state=useSelector(state=>state?.users);
   const {Profile}=state;
   console.log(state);
   const income=useSelector(state=>state?.income);//store wala
   const {incomeList}=income;
-console.log(income);
- 
+console.log(Math.ceil((incomeList?.totalDocs)/(incomeList?.limit)));
+const[page,setPage]=useState(1);
+useEffect(()=>{
+  dispatch(fetchAllIncome(page))
+},[page]);
+ console.log(page);
   return (
     <>
     
@@ -79,11 +81,12 @@ console.log(income);
 </table>
 <>
 {
- incomeList?.docs?.length>1 &&(
+ incomeList?.docs?.length>=1 &&(
     <Pagination
     setPage={setPage}
-    items={incomeList?.totalPages}
+    items={ Math.ceil((incomeList?.totalDocs)/(incomeList?.limit))}
     page={page}
+    limit={incomeList?.limit}
      />
   )
 }
