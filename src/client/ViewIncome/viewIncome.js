@@ -47,6 +47,23 @@ useEffect(()=>{
     <a href='/'><button style={{position:'initial'}}>Dashbaord</button></a>
     </nav>
     <div className="table-content">
+    <h1 class="heading">
+                <span>Y</span>
+                <span>O</span>
+                <span>U</span>
+                <span>R</span>
+                <span className="space"></span>
+                <span>I</span>
+                <span>N</span>
+                <span>C</span>
+                <span>O</span>
+               
+                <span>M</span>
+                <span>E</span>
+               
+
+            </h1>
+
       <h1 style={{textDecoration:'none',textAlign:'center'}}> HELLO ! {Profile?.firstname}</h1>
       <p style={{textAlign:'center'}}>Below is the List of all your incomes</p>
     </div>

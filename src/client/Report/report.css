@@ -1,0 +1,132 @@
+.container-form{
+    display: flex;
+     flex-wrap: wrap;
+    gap: 5rem;
+    
+  }
+  .side-content p{
+    text-align: center;
+    color: black;
+  
+  }
+  .main-content p{
+    color: black;
+  }
+  .side-content{
+    font-size: 30px;
+    margin-top: 4%;
+    text-align: center;
+  }
+  .side-content span{
+    font-size: 30px;
+  }
+  .main-content h2{
+    font-size: 30px;
+  
+  }
+  
+  .main-content{
+          /* display: flex; */
+      /* align-items: center; */
+      /* justify-content: center; */
+      /* flex: 1; */
+      display: flex;
+      flex-direction: column;
+  }
+  .main-content h2{
+      font-size: 30px;
+      color: black;
+  }
+  form textarea,
+  form input {
+      width: 100%;
+    border: 3px solid grey;
+    margin-top: 10px;
+  }
+  
+  .contact span {
+      font-size: 14px;
+      color: grey;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+    form span label {
+      color: crimson;
+    }
+    form .inputlast {
+      margin: 20px 0 20px 0;
+    }
+  
+    form .primary-btn {
+      padding: 15px 40px;
+      font-size: 18px;
+      background-color: green;
+      color: white;
+    }
+    .contact p {
+      font-size: 14px;
+      color: grey;
+      font-weight: 400;
+      margin: 10px 0;
+    }
+  .main-content{
+  
+    flex: 1 1 42rem;
+    align-items: center;
+    padding: 2rem
+  
+  }
+  
+  .grid1
+  {
+    /*display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;*/
+    
+    grid-template-columns: 200px repeat(auto-fill, 200px);
+    gap: 1.5rem;
+    column-gap: 80px;
+  }
+  .grid1 .input{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  
+  }
+  .flex1_space{
+    display: flex;gap: 1.2rem;
+    justify-content: center;
+  }
+  
+  @media screen and (max-width:518px){
+    .grid1{
+     display: flex;
+     flex-wrap: wrap;
+    }
+  .grid1 input{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    
+  
+  }
+  .container-form .flex1_space{
+    display: grid;
+    margin-top: 2%;
+  
+  }
+  
+  
+  }
+  @media screen and (max-width: 768px) {
+   
+    .side-content h3{
+      font-size: 30px;
+    }
+    .side-content p{
+      font-size: 20px;
+    }
+    .side-content span{
+      font-size: 20px;
+    }
+  }

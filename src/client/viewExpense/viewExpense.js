@@ -7,6 +7,7 @@ import ExpenseTable from './userContent';
 import Pagination from './pagination';
 import AddExpense from '../expenseTable/expense';
 import { EditExpense } from '../../redux/slices/expense/expense';
+import "./pagination.css"
 
 
 
@@ -56,8 +57,25 @@ useEffect(()=>{
     <a href='/'><button>Dashbaord</button></a>
    </nav>
     <div className="table-content">
-      <h1 style={{textDecoration:'none',textAlign:'center'}}> HELLO ! {Profile?.firstname}</h1>
-      <p style={{textAlign:'center'}}>This is your expenses</p>
+    <h1 class="heading">
+                <span>Y</span>
+                <span>O</span>
+                <span>U</span>
+                <span>R</span>
+                <span className="space"></span>
+                <span>E</span>
+                <span>X</span>
+                <span>P</span>
+                <span>E</span>
+               
+                <span>N</span>
+                <span>C</span>
+                <span>E</span>
+
+            </h1>
+
+      <h1 style={{textDecoration:'none',textAlign:'center',textTransform:'capitalize'}}> HELLO ! {Profile?.firstname}</h1>
+      <p style={{textAlign:'center'}}>THIS IS YOUR EXPENSE</p>
     </div>
     <button onClick={toggleExpense} >Add expense</button>
     <AddExpense  showIncomeBox={showExpense} toggleIncomeBox={toggleExpense}/>
