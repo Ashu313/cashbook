@@ -58,6 +58,7 @@
 }
 .sidebar ul{
     margin-top: 20px;
+    list-style: none;
 }
 .sidebar ul li{
     width: 100%;

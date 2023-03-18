@@ -146,7 +146,7 @@ var data = {
                     <div className="icon-box">
                         <i className="fas fa-user-graduate"></i>
                     </div>
-                    <a href="/seeexpense"><button type="button" >View Expense</button></a>
+ 
                 </div>
                    <div className="card">
                     <div className="card-content">
@@ -157,7 +157,7 @@ var data = {
                     <div className="icon-box">
                         <i className="fas fa-user-graduate"></i>
                     </div>
-                    <a href="/seeincome"><button type="button" >View Income</button></a>
+ 
                 </div>
                    <div className="card">
                     <div className="card-content">
