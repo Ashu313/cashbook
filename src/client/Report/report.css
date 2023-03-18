@@ -42,6 +42,7 @@
       width: 100%;
     border: 3px solid grey;
     margin-top: 10px;
+    padding: 4px;
   }
   
   .contact span {
@@ -91,6 +92,7 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    padding: 10px;
   
   }
   .flex1_space{

@@ -93,6 +93,10 @@ var data = {
             <input type="text" placeholder="search here"></input>
             <label for="search"><i className="fas fa-search"></i></label>
         </div>
+        <div className="user">
+        <i class="fa-solid fa-bell"></i>
+        </div>
+      
         <div className="user" onClick={handleClick}>
         <i class="fas fa-user" onClick={()=>{
             profile(true);
@@ -113,6 +117,18 @@ var data = {
                 <a href="report">
             <i className="fas fa-th-large"
             ></i>Report</a></li>
+              <li>
+                <a href="/seeexpense">
+            <i className="fas fa-th-large"
+            ></i>Expense</a></li>
+              <li>
+              <a href="/seeincome">
+            <i className="fas fa-th-large"
+            ></i>Income</a></li>
+              <li>
+                <a href="report">
+            <i className="fas fa-th-large"
+            ></i>Wallet</a></li>
               
            
             

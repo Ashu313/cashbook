@@ -47,8 +47,8 @@ emailjs.sendForm('service_umwrb3d',"template_f20ifle", e.target, 'Jqfe_1gmMdloHs
        
         <div className='container-form'>
           <div className='main-content'>
-            <h2 style={{color:'white'}}>Contact From</h2>
-            <p style={{color:'white'}}>Fill out the form below If you face any issue, we will get back you soon.</p>
+
+            <p style={{color:'white',fontSize:'30px'}}>Fill out the form below If you face any issue, we will get back you soon.</p>
 
             <form  onSubmit={formSubmit} >
               <div className='grid1'>
@@ -85,29 +85,9 @@ emailjs.sendForm('service_umwrb3d',"template_f20ifle", e.target, 'Jqfe_1gmMdloHs
             </form>
           </div>
 
-          <div className='side-content'>
-            <h3>Visit our location</h3>
-            <br />
 
-            <h3>Message us</h3>
-            <span>kashutosh727@gmail.com</span>
-            <br />
-            <span>+01 123 456 789</span>
-            <br />
-
-            <div className='icon'>
-              <h3>Follow Us</h3>
-
-              <div className='flex1_space'>
-                <i className='fab fa-facebook-f'></i>
-                <i className='fab fa-twitter'></i>
-                <i className='fab fa-linkedin'></i>
-                <i className='fab fa-instagram'></i>
-                <i className='fab fa-pinterest'></i>
-                <i className='fab fa-youtube'></i>
-              </div>
-            </div>
-          </div>
+         
+      
         </div>
     
       </section>

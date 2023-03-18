@@ -35,13 +35,13 @@ async function handleDelete(id) {
 
     const state=useSelector(state=>state?.expense)
     const{expenseList}=state;
-    console.log(state);
-    console.log(expenseList?.docs[0]?.id);
-    console.log(items?.id);
+   // console.log(state);
+    //console.log(expenseList?.docs[0]?.id);
+    //console.log(items?.id);
     return(
         <>
        <tr>
-      <th scope="row">{items?.title}{items?.id}</th>
+      <th scope="row">{items?.title}</th>
       
       <td>{items?.description}</td>
       <td>{items?.amount}</td>
