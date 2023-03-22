@@ -53,7 +53,7 @@ const Signup=()=>
 	 },[userAuth])
     return(
         <>
-					{!userLoading?
+					{userLoading?
 				<>
 			<div className='svg-cont' style={{textAlign:'center'}}>
 		<ColorRing

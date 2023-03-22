@@ -59,7 +59,7 @@ const Login=()=>
 	//console.log(formik);
     return(
         <>
-				{!userLoading?
+				{userLoading?
 				<>
 				<div className='svg-cont' style={{textAlign:'center'}}>
 		<ColorRing
