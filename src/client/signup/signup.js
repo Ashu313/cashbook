@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ColorRing } from 'react-loader-spinner';
+import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
+
 
 const formSchema=yup.object({
 	firstname:yup.string().required('first name is required'),
@@ -18,6 +20,18 @@ const Signup=()=>
 {
 
 	const dispatch=useDispatch();
+
+	const theme1=useSelector(state=>state.theme);
+	const darkMode = useSelector((state) => state.theme.darkmode);
+  
+	useEffect(() => {
+	  document.body.classList.toggle('dark-mode', darkMode);
+	}, [darkMode]);
+  
+	const handleThemeClick = () => {
+	 
+	  dispatch(theme1.darkmode ? setDefaultTheme() : setDarkTheme());
+	};
 	const user=useSelector(state=>state?.users)
 	const {userAppErr,userServerErr,userLoading,userAuth}=user;
 
@@ -53,6 +67,9 @@ const Signup=()=>
 	 },[userAuth])
     return(
         <>
+		<button onClick={handleThemeClick} style={{background:'none',position: "absolute",right:'0'}}>
+   {theme1.darkmode?<img src="https://ekeun.csb.app/images/night-mode.png" alt="" />:<img src="https://uploads.codesandbox.io/uploads/user/303cebe2-fbae-436e-9fc6-d422e691821a/rXl8-contrast.png" alt="" />}
+  </button>
 					{userLoading?
 				<>
 			<div className='svg-cont' style={{textAlign:'center'}}>
