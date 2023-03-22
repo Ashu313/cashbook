@@ -6,16 +6,16 @@
 	padding: 0;	
 	font-family: Raleway, sans-serif;
 }
-body{
+/*body{
   padding: 0;
   margin: 0;
   top: 20px;
   color:white;
   font-size: 20px;
-  /*background:linear-gradient(90deg, #5D54A4, #7C78B8);*/
+  /*background:linear-gradient(90deg, #5D54A4, #7C78B8);
   background-color: #282c34;
   cursor: pointer;
-}
+}*/
 body .main{
  
   
@@ -26,3 +26,15 @@ a{
 
 }
  
+body{
+  background-image: url("../public/bg-desktop.svg");
+  background-repeat: no-repeat;
+  background-color: hsl(257, 40%, 49%);
+  padding: 20px;
+}
+.dark-mode{
+  background-image: url("../public/bg-mobile.svg");
+  background-repeat: no-repeat;
+ background-color: #282c34;
+  padding: 20px;
+}

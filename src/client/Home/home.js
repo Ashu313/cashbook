@@ -1,15 +1,35 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
  
 import "./home.css";
 
 const Home=()=>{
 
+  const dispatch=useDispatch();
+  const theme1=useSelector(state=>state.theme);
+  const darkMode = useSelector((state) => state.theme.darkmode);
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-mode', darkMode);
+  }, [darkMode]);
+
+  const handleThemeClick = () => {
+   
+    dispatch(theme1.darkmode ? setDefaultTheme() : setDarkTheme());
+  };
     return(
         <>
         <section className="homepage">
          <div class="header">
    <img src="https://img.icons8.com/ios/50/000000/speech-bubble-with-dots.png" alt="icons" />
-  <img src="../logo.svg"alt="logo"/>
+  <img src=""alt="logo"/>
+  <button onClick={handleThemeClick} style={{background:'none',position: "absolute",right:'0'}}>
+   {theme1.darkmode?<img src="https://ekeun.csb.app/images/night-mode.png" alt="" />:<img src="https://uploads.codesandbox.io/uploads/user/303cebe2-fbae-436e-9fc6-d422e691821a/rXl8-contrast.png" alt="" />}
+  </button>
+ 
+  
 
  
  </div>

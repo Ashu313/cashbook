@@ -7,12 +7,8 @@
   box-sizing: border-box;
 }
 
-body{
-  background-image: url("../../../public/bg-desktop.svg");
-  background-repeat: no-repeat;
-  background-color: hsl(257, 40%, 49%);
-  padding: 20px;
-}
+
+
 
 .homepage .header{
   display: flex;
