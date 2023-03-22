@@ -5,10 +5,7 @@
     margin-top: 20px;
   
 }
-img{
-    width: 100%;
-    height: 100%;
-}
+
 .content-data{
     position: absolute;
     display: flex;

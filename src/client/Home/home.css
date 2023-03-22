@@ -1,25 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap');
 
-.stock-expense{
-    display: flex;
-    gap: 2rem;
+*{
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-image: url("../../../public/bg-desktop.svg");
+  background-repeat: no-repeat;
+  background-color: hsl(257, 40%, 49%);
+  padding: 20px;
+}
+
+.homepage .header{
+  display: flex;
+  flex-direction: row;
+}
+
+.homepage .header h1{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  color: white;
+}
+
+.homepage .header img{
+  padding: 5px;
+}
+
+.homepage .nav-main{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.homepage .item-1{
+  padding-top: 60px;
+  padding-right: 40px;
+}
+
+.homepage .item-2 h1{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 50px;
+  color: white;
+}
+
+.homepage .item-2 p{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  color: hsl(300, 69%, 71%);
+}
+
+.homepage .button{
+  width: 150px;
+  height: 40px;
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  color: hsl(257, 40%, 49%);
+  text-align: center;
+}
+
+.homepage .footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+}
+
+.homepage .icon{
+ margin-left: 10px;
+}
+
+.homepage .icon:hover,.button:hover{
+  background-color: hsl(300, 69%, 71%);
+}
+
+@media (max-width:1200px){
+  .homepage .nav-main{
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+  }
+  .homepage .item-2 h1,p {
+    text-align: center;
+  }
+  .homepage .button{
+    margin: 0 auto;
+  }
+  .homepage .footer{
+    justify-content: center;
+    padding-top: 30px;
+  }
 }
-.stock-expense .image{
-    flex: 1 1 40rem;
-    width:100px;
-}
-.stock-expense .text{
-    flex: 1 1 40rem;
-    font-size: 30px;
-}
-h1{
-    color:orange;
-    font-size: 35px;
-}
-p{
-    color:white;
-    font-size: 20px;
-}
-span{
-    font-size: 30px;
+
+@media (max-width:750px){
+  .homepage .item-1 img{
+    width: 90vw;
+    height: auto;
+  }
+  .homepage .item-1{
+    padding-top: 60px;
+    margin: 0 auto;
+  }
+  body{
+    padding: 0px;
+    background-image: url("../../../public/bg-mobile.svg");
+        
+    background-repeat: no-repeat;
+  }
 }

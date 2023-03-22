@@ -15,6 +15,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	position: fixed;
 	min-height: 100vh;
 }
 
@@ -87,7 +88,7 @@
 .login {
 	width: 320px;
 	padding: 30px;
-	padding-top: 156px;
+	 
 }
 
 .login__field {
@@ -96,8 +97,7 @@
 }
 
 .login__icon {
-	position: absolute;
-	top: 30px;
+ 
 	color: #7875B5;
 }
 

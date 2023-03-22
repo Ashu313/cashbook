@@ -14,6 +14,8 @@
 }
 .topbar{
     position: fixed;
+    top: 0;
+    left: 0;
     background-color: black;
     width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
@@ -49,6 +51,7 @@
 .sidebar{
     position: fixed;
     top: 60px;
+    left: 0;
     width: 260px;
     background-color: black;
     overflow-x: hidden;

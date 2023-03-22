@@ -1,47 +1,46 @@
 import React from "react";
-import ViewExpense from "../viewExpense/viewExpense";
+ 
 import "./home.css";
 
 const Home=()=>{
 
     return(
         <>
-        <section className='expense-pic'>
-        <div className='container-1'>
-        <div className='expense-image'>
-            <img src="./a1.png"></img>
-            
-            </div>
-            <div className='container-1-text'>
-                <div className='image'>
-                <img src='https://static.vecteezy.com/system/resources/previews/014/208/066/original/expense-ratio-3d-rendering-isometric-icon-png.png'></img>
-                </div>
-                <h1>BALANCER</h1>
-               <br></br>
-                <p>Track your expenses in real time</p>
-                <br></br>
-                <div className='btn'>
-                    <a href="/signup"><button>Check expenses</button></a>
-                </div>
-            </div>
-           
-        </div>
+        <section className="homepage">
+         <div class="header">
+   <img src="https://img.icons8.com/ios/50/000000/speech-bubble-with-dots.png" alt="icons" />
+  <img src="../logo.svg"alt="logo"/>
 
+ 
+ </div>
 
-</section>
-        <section className="home">
-            <div className="stock-expense">
-            <div className="image">
-                <img src="./a2.png"></img>
-            </div>
-            <div className="text">
-                <p1>understand your expenses 
-                    <br>
-                    </br>through graphs</p1>
-            </div>
-    </div>
+ <div class="nav-main">
+   <div class="item-1">
+     <img src="../illustration-mockups.svg" alt="mockups"  />
+   </div>
+   <div class="item-2">
+   
+     <h1>Check your Expenses <br/> Increase your savings</h1>
+     <p>Expense Tracker is an Web app where user can check and visualise there expenses and incomes in real time.User have multiple option provided for their smooth user Experience</p>
+     <a href="/signup"><div class="button" style={{textAlign:'center'}}>
+        Register 
+     </div>
+     </a>
+   </div>
+ </div>
+ <div class="footer">
+   <div class="icon">
+   <i class="fa-brands fa-facebook"></i>
+    
+   </div>
+   <div class="icon">
+   <i class="fa-brands fa-twitter"></i>
+   </div>
+   <div class="icon">
+   <i class="fa-brands fa-instagram"></i>
+   </div>
+ </div>
         </section>
-         <ViewExpense/>
         </>
     )
 }
