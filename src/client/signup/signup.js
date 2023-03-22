@@ -7,7 +7,7 @@ import { RegisterAction } from '../../redux/slices/users/userslice';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
+import { ColorRing } from 'react-loader-spinner';
 
 const formSchema=yup.object({
 	firstname:yup.string().required('first name is required'),
@@ -19,7 +19,7 @@ const Signup=()=>
 
 	const dispatch=useDispatch();
 	const user=useSelector(state=>state?.users)
-	const {userAppErr,userServerErr,userloading,userAuth}=user;
+	const {userAppErr,userServerErr,userLoading,userAuth}=user;
 
 	 const formik=useFormik({
 		initialValues:{
@@ -53,9 +53,28 @@ const Signup=()=>
 	 },[userAuth])
     return(
         <>
+					{!userLoading?
+				<>
+			<div className='svg-cont' style={{textAlign:'center'}}>
+		<ColorRing
+  visible={true}
+  height="400"
+  width="400"
+  JustifyContent='center'
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/>
+</div>
+<h1>Please do not refresh the Page</h1>
+</>
+		:
+		<>
         <div class="container">
 	<div class="screen">
 		<div class="screen__content">
+		{userAppErr || userServerErr?<div style={{color:'red',textaAlign:'center'}}>Network error</div>:<div style={{color:'red',textAlign:'center'}}></div>}
 			<form class="login" onSubmit={formik.handleSubmit}>
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
@@ -106,6 +125,8 @@ const Signup=()=>
 		</div>		
 	</div>
 </div>
+</>
+}
         </>
     )
 }

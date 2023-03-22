@@ -82,7 +82,7 @@ const Login=()=>
 		<div class="screen__content">
           
 			<form class="login" onSubmit={formik.handleSubmit}>
-			{userAppErr || userServerErr?<div style={{color:'red'}}>Network error</div>:<div style={{color:'red',textAlign:'center'}}></div>}
+			{userAppErr || userServerErr?<div style={{color:'red',textAlign:'center'}}>Network error</div>:<div style={{color:'red',textAlign:'center'}}></div>}
 				<div class="login__field">
 			
 					<i class="login__icon fas fa-user"></i>
