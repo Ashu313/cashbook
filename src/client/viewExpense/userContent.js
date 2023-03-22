@@ -25,16 +25,16 @@ const handleEdit=(items)=>{
 }
 async function handleDelete(id) {
   
-  console.log("hdccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc")
-  console.log(items?.id);
-  console.log(id);
+  //console.log("hdccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc")
+  //console.log(items?.id);
+  //console.log(id);
  await dispatch(deleteExpenseAction(id));
  
  await dispatch(fetchAllExpense());
 }
 
     const state=useSelector(state=>state?.expense)
-    const{expenseList}=state;
+    //const{expenseList}=state;
    // console.log(state);
     //console.log(expenseList?.docs[0]?.id);
     //console.log(items?.id);
