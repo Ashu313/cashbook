@@ -1,10 +1,12 @@
-import { Formik, useFormik } from 'formik';
-import react, { useEffect } from 'react'
+import {useFormik } from 'formik';
+import  { useEffect } from 'react'
 import "./login.css";
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginAction } from '../../redux/slices/users/userslice';
 import { useNavigate } from 'react-router-dom';
+import { ColorRing } from 'react-loader-spinner';
+
 
 const formSchema=yup.object({
 	email:yup.string().required('email is required'),
@@ -18,7 +20,7 @@ const Login=()=>
 	const dispatch=useDispatch();
 	const user=useSelector(state=>state?.users)
 	console.log(user);
-	const {userAppErr,userServerErr,userloading,userAuth}=user;
+	const {userAppErr,userServerErr,userLoading,userAuth}=user;
 
 	const formik=useFormik({
 		initialValues:{
@@ -57,12 +59,30 @@ const Login=()=>
 	//console.log(formik);
     return(
         <>
+				{!userLoading?
+				<>
+				<div className='svg-cont' style={{textAlign:'center'}}>
+		<ColorRing
+  visible={true}
+  height="400"
+  width="400"
+  JustifyContent='center'
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/>
+</div>
+<h1>Please do not refresh the Page</h1>
+</>
+		:
+		<>
         <div class="container">
 	<div class="screen">
 		<div class="screen__content">
-
+          
 			<form class="login" onSubmit={formik.handleSubmit}>
-			{userAppErr || userServerErr?<div style={{color:'green'}}></div>:<div style={{color:'red',textAlign:'center'}}></div>}
+			{userAppErr || userServerErr?<div style={{color:'red'}}>Network error</div>:<div style={{color:'red',textAlign:'center'}}></div>}
 				<div class="login__field">
 			
 					<i class="login__icon fas fa-user"></i>
@@ -95,16 +115,28 @@ const Login=()=>
 					<a href="#" class="social-login__icon fab fa-twitter"></a>
 				</div>
 			</div>
+		
 		</div>
+		 
 		<div class="screen__background">
 			<span class="screen__background__shape screen__background__shape4"></span>
 			<span class="screen__background__shape screen__background__shape3"></span>		
 			<span class="screen__background__shape screen__background__shape2"></span>
 			<span class="screen__background__shape screen__background__shape1"></span>
-		</div>		
+	 
+		</div>
+
+		
+
 	</div>
+
+
 </div>
+				
+</>
+}			
         </>
+
     )
 }
 export default Login;
