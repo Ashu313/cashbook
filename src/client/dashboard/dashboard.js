@@ -170,7 +170,7 @@ var data = {
                      
                     </div>
                     <div className="icon-box">
-                        <i className="fas fa-user-graduate"></i>
+                    <i class='bx bx-cart-alt cart'></i>
                     </div>
  
                 </div>
@@ -180,7 +180,7 @@ var data = {
                         <div className="card-name">TotalPrice</div>
                     </div>
                     <div className="icon-box">
-                        <i className="fas fa-user-graduate"></i>
+                    <i class='bx bx-cart-alt cart'></i>
                     </div>
                 </div>
                    <div className="card">
@@ -189,7 +189,7 @@ var data = {
                         <div className="card-name">Expenses</div>
                     </div>
                     <div className="icon-box">
-                        <i className="fas fa-user-graduate"></i>
+                    <i class='bx bx-cart-alt cart'></i>
                     </div>
                 </div>
             </div>
