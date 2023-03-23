@@ -9,6 +9,8 @@ import AddExpense from '../expenseTable/expense';
 
 import IncomeTable from './userContent';
 import AddIncome from '../incomeTable/income';
+import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
+
 
 
 
@@ -27,6 +29,20 @@ const ViewIncome=()=>
   useEffect(()=>{
     dispatch(UserProfile());
   },[dispatch]);
+
+  const val=localStorage.getItem('theme');
+
+
+	if (val === 'dark') {
+		console.log("S");
+		dispatch(setDarkTheme());
+	  } else {
+		dispatch(setDefaultTheme());
+	  }
+	  useEffect(() => {
+		document.body.classList.toggle('dark-mode', val==='dark');
+	  }, [val,dispatch]);
+	
 
 
   const state=useSelector(state=>state?.users);

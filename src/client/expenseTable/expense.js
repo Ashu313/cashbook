@@ -7,6 +7,8 @@ import { CreateExpense, fetchAllExpense } from "../../redux/slices/expense/expen
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { useEffect } from "react";
+import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
+
 
 
 const formSchema=yup.object({
@@ -19,6 +21,20 @@ const formSchema=yup.object({
 const AddExpense=({ items,expense,showIncomeBox, toggleIncomeBox })=>{
  
     const dispatch=useDispatch();
+    const val=localStorage.getItem('theme');
+
+
+	if (val === 'dark') {
+		console.log("S");
+		dispatch(setDarkTheme());
+	  } else {
+		dispatch(setDefaultTheme());
+	  }
+	  useEffect(() => {
+		document.body.classList.toggle('dark-mode', val==='dark');
+	  }, [val,dispatch]);
+	
+
     console.log(items?.id);
     
   const expenses=useSelector(state=>state?.expense);

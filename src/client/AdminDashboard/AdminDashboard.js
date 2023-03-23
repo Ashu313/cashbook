@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./AdminDashboard.css";
+
 import { Doughnut } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js';

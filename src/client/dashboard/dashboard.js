@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllAccount } from "../../redux/slices/accountDetail/account";
 import { UserProfile } from "../../redux/slices/users/userslice";
 import Profile1 from "../container/profileView/profile";
+import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
+
 
 
 
@@ -43,6 +45,19 @@ useEffect(()=>
         dispatch(fetchAllAccount())
 
 },[dispatch])
+const val=localStorage.getItem('theme');
+
+
+	if (val === 'dark') {
+		console.log("S");
+		dispatch(setDarkTheme());
+	  } else {
+		dispatch(setDefaultTheme());
+	  }
+	  useEffect(() => {
+		document.body.classList.toggle('dark-mode', val==='dark');
+	  }, [val,dispatch]);
+	
 
 const state=useSelector(state=>state?.users);
 const {Profile}=state;
@@ -140,18 +155,18 @@ var data = {
                 <div className="card">
                     <div className="card-content">
                         <div className="number">{totalExpenses}</div>
-                        <div className="card-name">expenses</div>
+                        <div className="card-name">Expenses</div>
                     
                     </div>
                     <div className="icon-box">
-                        <i className="fas fa-user-graduate"></i>
+                    <i class='bx bx-cart-alt cart'></i>
                     </div>
  
                 </div>
                    <div className="card">
                     <div className="card-content">
                         <div className="number">{totalincome}</div>
-                        <div className="card-name">income</div>
+                        <div className="card-name">Income</div>
                      
                     </div>
                     <div className="icon-box">
@@ -171,7 +186,7 @@ var data = {
                    <div className="card">
                     <div className="card-content">
                         <div className="number">1000$</div>
-                        <div className="card-name">expenses</div>
+                        <div className="card-name">Expenses</div>
                     </div>
                     <div className="icon-box">
                         <i className="fas fa-user-graduate"></i>

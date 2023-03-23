@@ -1,8 +1,13 @@
+.container-expense{
+    position: fixed;
+    width: 100%;
+}
 .user{
     width: 50px;
     height: 50px;
     position: relative;
     justify-self: right;
+    cursor: pointer;
 }
 .user img{
     position: absolute;
@@ -11,6 +16,7 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 .topbar{
     position: fixed;
@@ -91,10 +97,11 @@
     min-height: calc(100vh - 60px);
     position: absolute;
     top: 60px;
+    /* width: auto; */
     width: calc(100% - 260px);
     left: 260px;
-  
-   z-index: -1;
+    overflow: scroll;
+    z-index: -1;
 
 }
 .cards{

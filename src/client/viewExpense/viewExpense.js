@@ -8,6 +8,8 @@ import Pagination from './pagination';
 import AddExpense from '../expenseTable/expense';
 import { EditExpense } from '../../redux/slices/expense/expense';
 import "./pagination.css"
+import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
+
 
 
 
@@ -23,7 +25,20 @@ const ViewExpense=()=>
 
 
   const dispatch=useDispatch();
- 
+  const val=localStorage.getItem('theme');
+
+
+	if (val === 'dark') {
+		console.log("S");
+		dispatch(setDarkTheme());
+	  } else {
+		dispatch(setDefaultTheme());
+	  }
+	  useEffect(() => {
+		document.body.classList.toggle('dark-mode', val==='dark');
+	  }, [val,dispatch]);
+	
+
 
 
 
