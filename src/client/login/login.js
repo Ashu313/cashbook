@@ -21,10 +21,7 @@ const Login=()=>
 {
 
 	const val=localStorage.getItem('theme');
-	useEffect(() => {
-		document.body.classList.toggle('dark-mode', val);
-	  }, [val]);
-	
+
 	const dispatch=useDispatch();
 	if (val === 'dark') {
 		console.log("S");
@@ -32,6 +29,10 @@ const Login=()=>
 	  } else {
 		dispatch(setDefaultTheme());
 	  }
+	  useEffect(() => {
+		document.body.classList.toggle('dark-mode', val==='dark');
+	  }, [val,dispatch]);
+	
 	console.log(val);
 	//const dispatch=useDispatch();
 	const user=useSelector(state=>state?.users)
