@@ -102,7 +102,7 @@ var data = {
 <div className="container-expense">
     <div className="topbar">
         <div className="logo">
-            <h1>expense</h1>
+            <h1 style={{color:"orange"}}>expense</h1>
         </div>
         <div className="search">
             <input type="text" placeholder="search here"></input>
