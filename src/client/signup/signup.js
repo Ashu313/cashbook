@@ -19,19 +19,24 @@ const formSchema=yup.object({
 const Signup=()=>
 {
 
-	const dispatch=useDispatch();
+	//const dispatch=useDispatch();
+	const val=localStorage.getItem('theme');
 
-	const theme1=useSelector(state=>state.theme);
-	const darkMode = useSelector((state) => state.theme.darkmode);
-  
-	useEffect(() => {
-	  document.body.classList.toggle('dark-mode', darkMode);
-	}, [darkMode]);
-  
-	const handleThemeClick = () => {
-	 
-	  dispatch(theme1.darkmode ? setDefaultTheme() : setDarkTheme());
-	};
+	const dispatch=useDispatch();
+	if (val === 'dark') {
+		console.log("S");
+		dispatch(setDarkTheme());
+	  } else if(val==='default')
+	  {
+		dispatch(setDefaultTheme());
+	  }
+	  useEffect(() => {
+		document.body.classList.toggle('dark-mode', val==='dark');
+	  }, [val,dispatch]); //you need to send dispatch function also due to dispatch the data is updating
+	
+	console.log(val);
+	
+
 	const user=useSelector(state=>state?.users)
 	const {userAppErr,userServerErr,userLoading,userAuth}=user;
 
@@ -67,9 +72,7 @@ const Signup=()=>
 	 },[userAuth])
     return(
         <>
-		<button onClick={handleThemeClick} style={{background:'none',position: "absolute",right:'0'}}>
-   {theme1.darkmode?<img src="https://ekeun.csb.app/images/night-mode.png" alt="" />:<img src="https://uploads.codesandbox.io/uploads/user/303cebe2-fbae-436e-9fc6-d422e691821a/rXl8-contrast.png" alt="" />}
-  </button>
+
 					{userLoading?
 				<>
 			<div className='svg-cont' style={{textAlign:'center'}}>
