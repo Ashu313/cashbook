@@ -7,6 +7,9 @@ import { LoginAction } from '../../redux/slices/users/userslice';
 import { useNavigate } from 'react-router-dom';
 import { ColorRing } from 'react-loader-spinner';
 
+import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
+
+
 
 const formSchema=yup.object({
 	email:yup.string().required('email is required'),
@@ -14,10 +17,23 @@ const formSchema=yup.object({
 })
 
 
-const Login=()=>
+const Login=()=> 
 {
 
+	const val=localStorage.getItem('theme');
+	useEffect(() => {
+		document.body.classList.toggle('dark-mode', val);
+	  }, [val]);
+	
 	const dispatch=useDispatch();
+	if (val === 'dark') {
+		console.log("S");
+		dispatch(setDarkTheme());
+	  } else {
+		dispatch(setDefaultTheme());
+	  }
+	console.log(val);
+	//const dispatch=useDispatch();
 	const user=useSelector(state=>state?.users)
 	console.log(user);
 	const {userAppErr,userServerErr,userLoading,userAuth}=user;

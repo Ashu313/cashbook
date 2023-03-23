@@ -22,9 +22,26 @@ import AdminDashboard from './client/AdminDashboard/AdminDashboard';
 import AdminDashboard1 from './client/AdminDashboard/AdminDashboard';
 import ViewIncome from './client/ViewIncome/viewIncome';
 import ContactFrom from './client/Report/Report';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setDarkTheme, setDefaultTheme } from "./redux/slices/darkmode/darkmode"
+
 //use selector select the element from the redux tool kit or from store
 function App() {
-  
+ /* const val=localStorage.getItem('theme');
+	useEffect(() => {
+		document.body.classList.toggle('dark-mode', val);
+	  }, [val]);
+	
+	const dispatch=useDispatch();
+	if (val === 'dark') {
+		console.log("S");
+		dispatch(setDarkTheme());
+	  } else if(val==='default')
+     {
+		dispatch(setDefaultTheme());
+	  }
+    console.log(val);*/
   return (
     <>
     <Router>
