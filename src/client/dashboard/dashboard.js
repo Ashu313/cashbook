@@ -126,20 +126,18 @@ var data = {
             <i className="fas fa-th-large"
             ></i>Dashboard</a></li>
              <li><a href="wallet">
-            <i className="fas fa-th-large"
+            <i className="fas fa-wallet"
             ></i>wallet</a></li>
              <li>
                 <a href="report">
-            <i className="fas fa-th-large"
+            <i className="fas fa-phone"
             ></i>Report</a></li>
               <li>
                 <a href="/seeexpense">
-            <i className="fas fa-th-large"
-            ></i>Expense</a></li>
+              <i class='bx bx-list-ul' ></i>Expense</a></li>
               <li>
               <a href="/seeincome">
-            <i className="fas fa-th-large"
-            ></i>Income</a></li>
+              <i class='bx bx-list-ul' ></i>Income</a></li>
               <li>
                 <a href="report">
             <i className="fas fa-th-large"
