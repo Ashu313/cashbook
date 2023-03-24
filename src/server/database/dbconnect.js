@@ -1,8 +1,8 @@
-
+require('dotenv').config()
 const mongoose=require('mongoose');
 const dbConnect=async()=>{
 try {
-    await mongoose.connect('mongodb+srv://ashu:y3umnFNXkWcBIEkX@expense.wsn4oy6.mongodb.net/?retryWrites=true&w=majority',{
+    await mongoose.connect(`mongodb+srv://ashu:${process.env.PASSWORD}@expense.wsn4oy6.mongodb.net/?retryWrites=true&w=majority`,{
  
     
       useNewUrlParser:true,
