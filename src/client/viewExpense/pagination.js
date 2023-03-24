@@ -16,7 +16,7 @@ const Pagination=({items,setPage,page})=>{
     setPage(val);
     history(`?page=${val}`);
   }
-  console.log(items,page);
+ // console.log(items,page);
   const arr = Array.from(Array(items).keys());
   return(
       <>
