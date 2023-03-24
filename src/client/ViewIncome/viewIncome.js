@@ -60,7 +60,7 @@ useEffect(()=>{
     <>
     
     <nav>
-    <a href='/'><button style={{position:'initial'}}>Dashbaord</button></a>
+    <a href='/'><button style={{position:'initial'}}>Dashboard</button></a>
     </nav>
     <div className="table-content">
     <h1 class="heading">
@@ -68,7 +68,7 @@ useEffect(()=>{
                 <span>O</span>
                 <span>U</span>
                 <span>R</span>
-                <span className="space"></span>
+                <span className="space">   </span>
                 <span>I</span>
                 <span>N</span>
                 <span>C</span>
@@ -80,8 +80,8 @@ useEffect(()=>{
 
             </h1>
 
-      <h1 style={{textDecoration:'none',textAlign:'center'}}> HELLO ! {Profile?.firstname}</h1>
-      <p style={{textAlign:'center'}}>Below is the List of all your incomes</p>
+      <h1 style={{textDecoration:'none',textAlign:'center',textTransform:'capitalize'}}> HELLO ! {Profile?.firstname}</h1>
+      <p style={{textAlign:'center' ,fontSize:'20px'}}>Below is the List of all your incomes</p>
     </div>
     <AddIncome showIncomeBox={showIncomeBox} toggleIncomeBox={toggleIncomeBox} />
   <button type='button' onClick={toggleIncomeBox}>Add Income</button>

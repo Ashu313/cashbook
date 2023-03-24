@@ -24,9 +24,10 @@ h1{
     border-radius: 8px;
     color: orange;
     font-size: 50px;
-    padding: 2px;
+    padding: 10px;
 
 }
 .space{
-    display: none;
+   opacity: 0;
+    
 }

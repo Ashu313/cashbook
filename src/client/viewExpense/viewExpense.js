@@ -69,7 +69,7 @@ useEffect(()=>{
     <>
     
    <nav>
-    <a href='/'><button>Dashbaord</button></a>
+    <a href='/'><button>Dashboard</button></a>
    </nav>
     <div className="table-content">
     <h1 class="heading">
@@ -90,7 +90,7 @@ useEffect(()=>{
             </h1>
 
       <h1 style={{textDecoration:'none',textAlign:'center',textTransform:'capitalize'}}> HELLO ! {Profile?.firstname}</h1>
-      <p style={{textAlign:'center'}}>THIS IS YOUR EXPENSE</p>
+      <p style={{textAlign:'center',fontSize:'20px'}}>THIS IS YOUR EXPENSE</p>
     </div>
     <button onClick={toggleExpense} >Add expense</button>
     <AddExpense  showIncomeBox={showExpense} toggleIncomeBox={toggleExpense}/>

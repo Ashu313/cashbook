@@ -28,6 +28,9 @@ a{
 .dark-mode h1{
   color: white;
 }
+.dark-mode p{
+  color: white;
+}
 body{
   background-image: url("../public/bg-desktop.svg");
   background-repeat: no-repeat;
