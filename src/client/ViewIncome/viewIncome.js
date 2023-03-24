@@ -22,7 +22,7 @@ const ViewIncome=()=>
 
   // Function to toggle the state of the Income box
   const toggleIncomeBox = () => {
-    console.log("bsdk")
+    
     setShowIncomeBox(!showIncomeBox);
   };
   const dispatch=useDispatch();
@@ -47,10 +47,10 @@ const ViewIncome=()=>
 
   const state=useSelector(state=>state?.users);
   const {Profile}=state;
-  console.log(state);
+  //console.log(state);
   const income=useSelector(state=>state?.income);//store wala
   const {incomeList}=income;
-console.log(Math.ceil((incomeList?.totalDocs)/(incomeList?.limit)));
+//console.log(Math.ceil((incomeList?.totalDocs)/(incomeList?.limit)));
 const[page,setPage]=useState(1);
 useEffect(()=>{
   dispatch(fetchAllIncome(page))
