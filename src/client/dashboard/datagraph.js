@@ -11,6 +11,7 @@ const dataGraph=({income,expenses})=>{
         labels: [
           'Income',
           'Expenses',
+          'totalAmount'
           
         ],
         datasets: [{
@@ -27,14 +28,17 @@ const dataGraph=({income,expenses})=>{
       
       const data1 = {
         labels: ['january','february','march','april','may','june','july','august','september','october','november','december'],
+        
         datasets: [{
           label: 'My First Dataset',
           data: [65, 59, 80, 81, 56, 55, 40],
           fill: false,
           borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1
+          tension: 0.1,
+          fontColor:'white'
         }]
       };
+ 
       return(
         <>
           <div class="charts">
@@ -42,7 +46,7 @@ const dataGraph=({income,expenses})=>{
                     <h2>Earning expenses</h2>
                     <div>
                           <Line
-                          data={data1}/>
+                          data={data1}  />
                     </div>
                 </div>
                   <div className="chart">

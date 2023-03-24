@@ -43,7 +43,7 @@
     outline: none;
     border: none;
     border-radius: 10px;
-    background-color: wheat;
+    background-color: white;
     margin-top: 10px;
 
 }
@@ -52,6 +52,7 @@
     right: 15px;
     top: 15px;
     cursor: pointer;
+    font-size: 30px;
 }
 /*sidebar*/
 .sidebar{
@@ -116,7 +117,8 @@ padding: 20px;
 display: flex;
 align-items: center;
 justify-content: space-between;
-background-color: #36454F;
+/*background-color: #36454F;*/
+background-color: #0584d8;
 
 border-radius: 10px;
 box-shadow: rgba(0, 0, 0, 0.8);
@@ -125,6 +127,12 @@ box-shadow: rgba(0, 0, 0, 0.8);
     font-size: 35px;
     font-weight: 300px;
     color: black;
+}
+.dark-mode .number{
+    color: white;
+}
+.dark-mode .card-name{
+    color:white;
 }
 .card-name{
     font-size: 45px;

@@ -31,7 +31,14 @@ a{
 .dark-mode p{
   color: white;
 }
+.dark-mode h2{
+  color: white;
+}
+i{
+  color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));
+ }
 body{
+
   background-image: url("../public/bg-desktop.svg");
   background-repeat: no-repeat;
   background-color: hsl(257, 40%, 49%);

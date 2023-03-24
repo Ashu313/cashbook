@@ -81,7 +81,7 @@ useEffect(()=>{
             </h1>
 
       <h1 style={{textDecoration:'none',textAlign:'center',textTransform:'capitalize'}}> HELLO ! {Profile?.firstname}</h1>
-      <p style={{textAlign:'center' ,fontSize:'20px'}}>Below is the List of all your incomes</p>
+      <p style={{textAlign:'center',fontSize:'20px'}}>Below is the List of all your incomes</p>
     </div>
     <AddIncome showIncomeBox={showIncomeBox} toggleIncomeBox={toggleIncomeBox} />
   <button type='button' onClick={toggleIncomeBox}>Add Income</button>

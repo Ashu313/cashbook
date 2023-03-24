@@ -29,13 +29,34 @@ const data1 = {
     tension: 0.1
   }]
 };
-const [profile,setProfile]=useState(false);
 
+const dispatch=useDispatch();
+const [profile,setProfile]=useState(false);
+const [set,notSet]=useState(false);
+const darkMode = useSelector((state) => state.theme.darkmode);
+useEffect(() => {
+    // Initialize the theme state from local storage, if available
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark') {
+      dispatch(setDarkTheme());
+    } else {
+      dispatch(setDefaultTheme());
+    }
+    notSet(true);
+  }, [dispatch]);
+  useEffect(() => {
+    // Update local storage when theme state changes
+    if (set) {
+      localStorage.setItem('theme', darkMode ? 'dark' : 'default');
+    }
+  }, [darkMode, set]);   
+  const handleThemeClick = () => {
+    dispatch(darkMode ? setDefaultTheme() : setDarkTheme());
+  };
 const handleClick=()=>{
     setProfile(!profile);
 }
-console.log(profile);
-const dispatch=useDispatch();
+//console.log(profile);
 useEffect(()=>{
     dispatch(UserProfile()); 
  },[dispatch]);
@@ -58,12 +79,12 @@ const val=localStorage.getItem('theme');
 		document.body.classList.toggle('dark-mode', val==='dark');
 	  }, [val,dispatch]);
 	
-
+  
 const state=useSelector(state=>state?.users);
 const {Profile}=state;
-console.log(Profile);
+//console.log(Profile);
 const account=useSelector(state=>state?.account);
-console.log(account);
+///console.log(account);
 //console.log(profile);
 const totalincome=Profile?.incomes?.reduce((acc,curr)=>{
    
@@ -74,7 +95,7 @@ const totalExpenses=Profile?.expenses?.reduce((acc,curr)=>{
 },0)
 //const account=useSelector(state=>state?.account);
 //console.log(account);
-console.log({totalExpenses,totalincome})
+///console.log({totalExpenses,totalincome})
 
 var data = {
     labels: [
@@ -111,7 +132,7 @@ var data = {
         <div className="user">
         <i class="fa-solid fa-bell"></i>
         </div>
-      
+   
         <div className="user" onClick={handleClick}>
         <i class="fas fa-user" onClick={()=>{
             profile(true);
@@ -147,6 +168,8 @@ var data = {
             
             
         </ul>
+  
+      
         </div>
         <div className="main">
             <div className="cards">
@@ -175,7 +198,8 @@ var data = {
                    <div className="card">
                     <div className="card-content">
                         <div className="number">{totalExpenses+totalincome}</div>
-                        <div className="card-name">TotalPrice</div>
+                        <div className="card-name">TotalPrice        
+  </div>
                     </div>
                     <div className="icon-box">
                     <i class='bx bx-cart-alt cart'></i>
