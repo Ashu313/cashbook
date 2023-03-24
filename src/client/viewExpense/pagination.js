@@ -1,28 +1,41 @@
 
+
 import React from "react";
+import { useNavigate } from 'react-router-dom';
+
 import "./pagination.css";
 
-const Pagination=({items,setPage,page})=>{
 
+
+const Pagination=({items,setPage,page})=>{
+ 
+    const history = useNavigate();
+  const  handleChange=(val)=>{
+   
+  
+    setPage(val);
+    history(`?page=${val}`);
+  }
+  console.log(items,page);
   const arr = Array.from(Array(items).keys());
   return(
       <>
        <nav aria-label="...">
           <ul className="pagination">
-          <li className={`page-item ${page === 0 ? 'disabled' : ''}`}>
-                  <button onClick={() => setPage(page - 1)} className="page-link">Previous</button>
+          <li className={`page-item ${page<=1? 'disabled' : ''}`}>
+                  <button onClick={() => handleChange(page - 1)} className="page-link">Previous</button>
               </li>
 
               {arr?.map(num=>(
-                  <li key={num} className={`page-item ${num === page ? 'active' : ''}`}>
-                      <button onClick={() => setPage(num)} className="page-link">{num + 1}</button>
+                  <li key={num} className={`page-item ${num +1=== page ? 'active' : ''}`}>
+                    <button onClick={()=>  handleChange(num+1)}className="page-link" disabled={page===num+1}>{num + 1}</button>
                   </li>
               ))}
 
             
 
-              <li className={`page-item ${page === items - 1 ? 'disabled' : ''}`}>
-                  <button onClick={() => setPage(page + 1)} className="page-link">Next</button>
+              <li className={`page-item ${page>=items ? 'disabled' : ''}`}>
+                  <button onClick={() => handleChange(page + 1)} className="page-link">Next</button>
               </li>
           </ul>
       </nav>

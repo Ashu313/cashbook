@@ -91,7 +91,7 @@ if(userFound && (await userFound?.isPasswordMatch(password)))
 }
 else
 {
-res.status?Error.code : 500;
+ 
 throw new Error('invalid login credintals');
 }
 

@@ -38,7 +38,9 @@ const ViewExpense=()=>
 		document.body.classList.toggle('dark-mode', val==='dark');
 	  }, [val,dispatch]);
 	
-
+    useEffect(()=>{
+      dispatch(fetchAllExpense(page));
+    },[page]);
 
 
 
@@ -46,9 +48,7 @@ const ViewExpense=()=>
     dispatch(UserProfile());
   },[dispatch]);
 
-useEffect(()=>{
-  dispatch(fetchAllExpense(page));
-},[page]);
+ 
 useEffect(()=>{
   dispatch(EditExpense());
 },[dispatch]);
@@ -121,10 +121,10 @@ useEffect(()=>{
 </table>
 <>
 {
-  expenseList?.docs?.length>1 &&(
+  expenseList?.docs?.length>=1 &&(
     <Pagination
     setPage={setPage}
-    items={ expenseList?.totalPages}
+    items={ Math.ceil((expenseList?.totalDocs)/(expenseList?.limit))}
     page={page}
      />
   )

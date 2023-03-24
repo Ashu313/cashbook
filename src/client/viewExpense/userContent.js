@@ -11,9 +11,9 @@ const ExpenseTable=({items,toggleIncomeBox})=>{
 const dispatch = useDispatch();
 const [editingExpense, setEditingExpense] = useState(null);
 const [openId, setOpenId] = useState(null);
-useEffect(()=>{
+/*useEffect(()=>{
   dispatch(fetchAllExpense());
-},[dispatch]);
+},[dispatch]);*/
 
 const handleEdit=(items)=>{
  

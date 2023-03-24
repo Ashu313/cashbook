@@ -25,7 +25,9 @@ a{
   text-decoration: none;
 
 }
- 
+.dark-mode h1{
+  color: white;
+}
 body{
   background-image: url("../public/bg-desktop.svg");
   background-repeat: no-repeat;
