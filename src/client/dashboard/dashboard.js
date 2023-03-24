@@ -49,8 +49,12 @@ useEffect(() => {
     if (set) {
       localStorage.setItem('theme', darkMode ? 'dark' : 'default');
     }
-  }, [darkMode, set]);   
+  }, [darkMode, set]); 
+  useEffect(() => {
+		document.body.classList.toggle('dark-mode', darkMode);
+	  }, [darkMode]);  
   const handleThemeClick = () => {
+    console.log("ss");
     dispatch(darkMode ? setDefaultTheme() : setDarkTheme());
   };
 const handleClick=()=>{
@@ -66,18 +70,8 @@ useEffect(()=>
         dispatch(fetchAllAccount())
 
 },[dispatch])
-const val=localStorage.getItem('theme');
-
-
-	if (val === 'dark') {
-		console.log("S");
-		dispatch(setDarkTheme());
-	  } else {
-		dispatch(setDefaultTheme());
-	  }
-	  useEffect(() => {
-		document.body.classList.toggle('dark-mode', val==='dark');
-	  }, [val,dispatch]);
+ 
+	
 	
   
 const state=useSelector(state=>state?.users);
@@ -129,6 +123,12 @@ var data = {
             <input type="text" placeholder="search here"></input>
             <label for="search"><i className="fas fa-search"></i></label>
         </div>
+        <div className="flex1">
+        <div className="nightmode">
+        <button onClick={handleThemeClick} style={{background:'none'}}>
+   {darkMode?<i class="fa-solid fa-moon fa-spin-pulse" style={{fontSize:'40px'}}></i>:<i class="fa-solid fa-sun fa-spin-pulse" style={{fontSize:'40px'}}></i>}
+  </button>
+  </div>
         <div className="user">
         <i class="fa-solid fa-bell"></i>
         </div>
@@ -139,6 +139,7 @@ var data = {
            }}></i>
         </div>
         {profile && <Profile1 setProfile={setProfile}/>}
+    </div>
     </div>
   
     <div className="sidebar">
@@ -187,7 +188,8 @@ var data = {
                    <div className="card">
                     <div className="card-content">
                         <div className="number">{totalincome}</div>
-                        <div className="card-name">Income</div>
+                        <div className="card-name">Income</div> 
+                       
                      
                     </div>
                     <div className="icon-box">
