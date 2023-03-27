@@ -81,8 +81,8 @@ const Login=()=>
 				<div className='svg-cont' style={{textAlign:'center'}}>
 		<ColorRing
   visible={true}
-  height="400"
-  width="400"
+  height="200"
+  width="200"
   JustifyContent='center'
   ariaLabel="blocks-loading"
   wrapperStyle={{}}

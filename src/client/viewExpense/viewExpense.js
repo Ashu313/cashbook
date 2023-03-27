@@ -9,7 +9,7 @@ import AddExpense from '../expenseTable/expense';
 import { EditExpense } from '../../redux/slices/expense/expense';
 import "./pagination.css"
 import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
-
+import axios from 'axios';
 
 
 
@@ -18,6 +18,7 @@ const ViewExpense=()=>
   const[page,setPage]=useState(1);
   const [openId, setOpenId] = useState(null);
   const [showExpense,setShowExpense]=useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
  
   const toggleExpense=()=>{
     setShowExpense(!showExpense)
@@ -25,6 +26,8 @@ const ViewExpense=()=>
 
 
   const dispatch=useDispatch();
+
+ 
   const val=localStorage.getItem('theme');
 
 
@@ -53,23 +56,33 @@ useEffect(()=>{
   dispatch(EditExpense());
 },[dispatch]);
  
- 
+ const handleChange=(event)=>{
+  setSearchQuery(event.target.value)
+ }
   const state=useSelector(state=>state?.users);
   const {Profile}=state;
-  console.log(state);
+  //console.log(state);
+  console.log(Profile?.expenses);
   const expense=useSelector(state=>state?.expense);
   const {expenseList}=expense;
-  console.log(expense);
+  console.log(expenseList);
   console.log(expenseList?.docs);
+  const {Expenses}=state;
+  console.log(Expenses);
   const state1=useSelector(state=>state?.users);
   const{expenseUpdated}=state1;
   console.log(state);
- 
+
+
   return (
     <>
     
    <nav>
     <a href='/'><button>Dashboard</button></a>
+    <div className="search">
+            <input type="text" placeholder="search here"  value={searchQuery} onChange={handleChange}></input>
+            <label for="search"><i className="fas fa-search"></i></label>
+        </div>
    </nav>
     <div className="table-content">
     <h1 class="heading">
@@ -111,7 +124,7 @@ useEffect(()=>{
                       <h2>No Expense Found</h2>
                     ) :
     
-      (expenseList?.docs?.map(exp=>(
+      ( expenseList?.docs?.map(exp=>(
         <ExpenseTable items={exp} toggleIncomeBox={toggleExpense} key={exp?.id}/>
       ))
     )}
@@ -121,7 +134,7 @@ useEffect(()=>{
 </table>
 <>
 {
-  expenseList?.docs?.length>=1 &&(
+   expenseList?.docs?.length>=1 &&(
     <Pagination
     setPage={setPage}
     items={ Math.ceil((expenseList?.totalDocs)/(expenseList?.limit))}

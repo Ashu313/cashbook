@@ -5,6 +5,7 @@
 .flex1{
 display: flex;
 gap: 1rem;
+top:-10px;
 position: absolute;
 right: 0;
 }
@@ -148,6 +149,11 @@ box-shadow: rgba(0, 0, 0, 0.8);
     font-size: 45px;
     color: black;
 }
+i{
+    font-size: 40px;
+    position: relative;
+    top: 10px;
+}
 /*charts*/
 .charts{
     display: grid;
@@ -181,18 +187,44 @@ box-shadow: rgba(0, 0, 0, 0.8);
     font-size: 40px;
     margin-top: 10px;
 }
+.menu-icons{
+    display: none;;
+}
 @media (max-width:1120px)
 {
+
+    .menu-icons{
+        display: block;;
+    }
+    .sidebar.active{
+        display: none;
+    }
     .sidebar{
-        width: 60px;
+        width:100%;
     }
     .main{
         width: calc(100% - 60px);
         left: 60px;
     }
+    
+    
 }
 @media (max-width:880px)
 {
+    .sidebar.active{
+        display: none;
+    }
+    .search1.active{
+        display: none;
+    }
+    .search1{
+    position: relative;
+    width: 60%;
+    justify-self: center;
+    }
+    .menu-icons{
+        display: block;
+    }
     .cards{
         width: 100%;
         grid-template-columns: repeat(2,1fr);
@@ -202,5 +234,19 @@ box-shadow: rgba(0, 0, 0, 0.8);
     .charts{
         grid-template-columns: 1fr;
     }
+    .main{
+        width: 100%;
+    
+    min-height: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    /* width: auto; */
+   
+    /* left: 260px; */
+    overflow: scroll;
+    z-index: -1;
+    }
+
     
 }

@@ -33,6 +33,10 @@ const data1 = {
 const dispatch=useDispatch();
 const [profile,setProfile]=useState(false);
 const [set,notSet]=useState(false);
+const [navbar,setNavbar]=useState(false);
+const handleNav=()=>{
+  setNavbar(!navbar);
+}
 const darkMode = useSelector((state) => state.theme.darkmode);
 useEffect(() => {
     // Initialize the theme state from local storage, if available
@@ -116,13 +120,13 @@ var data = {
 <>
 <div className="container-expense">
     <div className="topbar">
-        <div className="logo">
-            <h1 style={{color:"orange"}}>expense</h1>
+      <div className="menu-icons" onClick={handleNav}>
+        {!navbar?<i class="fa-solid fa-bars"></i>:<i class="fa-sharp fa-regular fa-xmark"></i>}
+      </div>
+        <div className="logo" style={{display:'flex'}}>
+            <h1 style={{color:"orange",marginTop:'10px'}}>expense</h1>
         </div>
-        <div className="search">
-            <input type="text" placeholder="search here"></input>
-            <label for="search"><i className="fas fa-search"></i></label>
-        </div>
+      
         <div className="flex1">
         <div className="nightmode">
         <button onClick={handleThemeClick} style={{background:'none'}}>
@@ -141,8 +145,8 @@ var data = {
         {profile && <Profile1 setProfile={setProfile}/>}
     </div>
     </div>
-  
-    <div className="sidebar">
+    
+    <div className={navbar?'sidebar':'sidebar active'}>
         <ul>
         <li><a href="/dashboard">
             <i className="fas fa-th-large"
@@ -165,7 +169,10 @@ var data = {
             <i className="fas fa-th-large"
             ></i>Wallet</a></li>
               
-           
+              <div className="search">
+            <input type="text" placeholder="search here"></input>
+            <label for="search"><i className="fas fa-search"></i></label>
+        </div>
             
             
         </ul>

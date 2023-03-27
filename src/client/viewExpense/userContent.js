@@ -40,6 +40,7 @@ async function handleDelete(id) {
     //console.log(items?.id);
     return(
         <>
+        
        <tr>
       <th scope="row">{items?.title}</th>
       
@@ -53,7 +54,7 @@ async function handleDelete(id) {
     </tr>
     {editingExpense && <AddExpense  items={items} expense={editingExpense} />}
     
-        </>
+      </>
     )
 }
 export default ExpenseTable; 
