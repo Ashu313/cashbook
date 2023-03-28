@@ -16,6 +16,12 @@ right: 0;
     justify-self: right;
     cursor: pointer;
 }
+.btn{
+    display: flex;
+    /* justify-content: center; */
+   
+    padding: 1rem;
+}
 .user img{
     position: absolute;
     top: 0;
