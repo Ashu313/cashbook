@@ -1,7 +1,7 @@
 const http=require('http');
 const PORT=process.env.PORT||5000;
-const app=require('./server/app');
-const dbConnect=require('./server/database/dbconnect');
+const app=require('./app');
+const dbConnect=require('./database/dbconnect');
 dbConnect();
 const server=http.createServer(app);
  
