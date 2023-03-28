@@ -79,10 +79,7 @@ useEffect(()=>{
     
    <nav>
     <a href='/'><button>Dashboard</button></a>
-    <div className="search">
-            <input type="text" placeholder="search here"  value={searchQuery} onChange={handleChange}></input>
-            <label for="search"><i className="fas fa-search"></i></label>
-        </div>
+     
    </nav>
     <div className="table-content">
     <h1 class="heading">
