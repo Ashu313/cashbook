@@ -30,14 +30,12 @@ const createExpense=expressAsyncHandler (async(req,res)=>{
 const fetchExpense=expressAsyncHandler (async(req,res)=>{
     const {page}=req.query;
     const {limit}=req.query;
-    //console.log('user');
-    console.log(req.user);
-    //console.log('user');
+   
+  
     const searchText=req.query.searchText;
     const query = searchText ? { $or: [{ 'title': { $regex: searchText, $options: 'i' } }, { 'description': { $regex: searchText, $options: 'i' } }] } : {};
     console.log(query);
-  //  console.log(searchText);
-   // console.log("choi")
+  
        const options = {
         page: Number(page),
         limit: 10,
@@ -48,7 +46,7 @@ const fetchExpense=expressAsyncHandler (async(req,res)=>{
         const income=await Expenses.paginate({},{limit:3,page:Number(page),sort:{ date: -1 },populate:['user']})
        
         res.json(income);
-        console.log('madarchod income');
+      
     }
     catch(err)
     {
