@@ -82,7 +82,11 @@ const state=useSelector(state=>state?.users);
 const {Profile}=state;
 //console.log(Profile);
 const account=useSelector(state=>state?.account);
-///console.log(account);
+const {AccountStats}=account;
+const expense=AccountStats?.expenseStats
+ const income=AccountStats?.IncomeStats;
+console.log(income);
+
 //console.log(profile);
 const totalincome=Profile?.incomes?.reduce((acc,curr)=>{
    
