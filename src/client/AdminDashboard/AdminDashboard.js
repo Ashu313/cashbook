@@ -8,6 +8,8 @@ import { useState } from "react";
 import AddExpense from "../expenseTable/expense";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllAccount } from "../../redux/slices/accountDetail/account";
+import { UserProfile } from "../../redux/slices/users/userslice";
+import "./AdminDashboard.css"
 
 
 Chart.register(...registerables);
@@ -52,8 +54,19 @@ useEffect(()=>
         dispatch(fetchAllAccount())
 
 },[dispatch])
+useEffect(()=>{
+    dispatch(UserProfile()); 
+ },[dispatch]);
+
 const account=useSelector(state=>state?.account);
-console.log(account);
+const {AccountStats}=account;
+const expense=AccountStats?.expenseStats
+console.log("hd");
+const income=AccountStats?.IncomeStats;
+console.log(income);
+
+
+console.log(AccountStats);
     return(
 <>
 <div className="container-expense">
@@ -106,43 +119,29 @@ console.log(account);
             <div className="cards">
                 <div className="card">
                     <div className="card-content">
-                        <div className="number">1000$</div>
-                        <div className="card-name">expenses</div>
-                    
-                    </div>
-                    <div className="icon-box">
-                        <i className="fas fa-user-graduate"></i>
-                    </div>
+                    {Array.isArray(expense) && expense?.length > 0?
+                    <>
+                     <p>Average Expense:<span>{expense?.[0]?.averageExp}</span></p>
+                     <p>min Expense:<span>{expense?.[0]?.minExp}</span></p>
+                     <p>max Expense:<span>{expense?.[0]?.maxExp}</span></p>
+                     <p>expenseRecord:<span>{expense?.[0]?.totalRecordExp}</span></p>
+                     </>
+                    :"emeptu"
+}
+</div>
+                   
                     <button type="button" >View Expense</button>
                 </div>
+                  
+            
                    <div className="card">
                     <div className="card-content">
-                        <div className="number">1000$</div>
-                        <div className="card-name">income</div>
-                     
+                    <p>Average income:<span>{income?.[0]?.averageinc}</span></p>
+                     <p>min income:<span>{income?.[0]?.mininc}</span></p>
+                     <p>max income:<span>{income?.[0]?.maxinc}</span></p>
+                     <p>incomeRecord:<span>{income?.[0]?.totalRecordinc}</span></p>
                     </div>
-                    <div className="icon-box">
-                        <i className="fas fa-user-graduate"></i>
-                    </div>
-                    <button type="button">View Income</button>
-                </div>
-                   <div className="card">
-                    <div className="card-content">
-                        <div className="number">1000$</div>
-                        <div className="card-name">TotalPrice</div>
-                    </div>
-                    <div className="icon-box">
-                        <i className="fas fa-user-graduate"></i>
-                    </div>
-                </div>
-                   <div className="card">
-                    <div className="card-content">
-                        <div className="number">1000$</div>
-                        <div className="card-name">expenses</div>
-                    </div>
-                    <div className="icon-box">
-                        <i className="fas fa-user-graduate"></i>
-                    </div>
+                  
                 </div>
             </div>
             <div class="charts">

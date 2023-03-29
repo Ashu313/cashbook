@@ -62,7 +62,7 @@ function App() {
   <Route path='/seeexpense' element={<ProtectedRoute><ViewExpense/></ProtectedRoute>}/>
   <Route path='/seeincome' element={<ProtectedRoute><ViewIncome/></ProtectedRoute>}/>
   <Route path='/report' element={<ProtectedRoute><ContactFrom/></ProtectedRoute>}/>
-  
+  <Route path='/admin' element={<AdminProtectedRoute><AdminDashboard1></AdminDashboard1></AdminProtectedRoute>}/>
 </Routes>
     </Router>
    

@@ -66,7 +66,7 @@ try{
 }
 catch(error)
 {
-    console.log('pussy');
+   
  if(!error?.response)
  {
     throw error;
