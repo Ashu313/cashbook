@@ -72,6 +72,11 @@ useEffect(()=>{
   const state1=useSelector(state=>state?.users);
   const{expenseUpdated}=state1;
   console.log(state);
+  const rowsPerPage = 3;
+  const pageCount = Math.ceil(Profile?.expenses.length / rowsPerPage);
+  const startIndex = (page - 1) * rowsPerPage;
+const endIndex = startIndex + rowsPerPage;
+const currentExpenses = Profile?.expenses.slice(startIndex, endIndex);
 
 
   return (
@@ -117,11 +122,11 @@ useEffect(()=>{
   </thead>
   <tbody>
     <>
-    {expenseList?.length <= 0 ? (
+    {Profile?.expenses?.length <= 0 ? (
                       <h2>No Expense Found</h2>
                     ) :
     
-      ( expenseList?.docs?.map(exp=>(
+      ( currentExpenses?.map(exp=>(
         <ExpenseTable items={exp} toggleIncomeBox={toggleExpense} key={exp?.id}/>
       ))
     )}
@@ -131,10 +136,10 @@ useEffect(()=>{
 </table>
 <>
 {
-   expenseList?.docs?.length>=1 &&(
+   Profile?.expenses?.length>=1 &&(
     <Pagination
     setPage={setPage}
-    items={ Math.ceil((expenseList?.totalDocs)/(expenseList?.limit))}
+    items={ Math.ceil((Profile?.expenses?.length)/(3))}
     page={page}
      />
   )

@@ -17,6 +17,7 @@ const authMiddlewares=expressAsyncHandler(async(req,res,next)=>{
             const user= await User.findById(decodeUser?.id);
             req.user=user;
             console.log(user);
+            console.log('chut ki rani')
             next();
         }
     } catch (error) {
