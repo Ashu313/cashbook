@@ -27,6 +27,7 @@ import { useDispatch } from 'react-redux';
 import { setDarkTheme, setDefaultTheme } from "./redux/slices/darkmode/darkmode"
 import ViewExpenseData from './client/Adminexpense/viewExpense';
 import ViewAllIncome from './client/AdminIncome/viewincome';
+import { UserProfile } from './redux/slices/users/userslice';
 
 //use selector select the element from the redux tool kit or from store
 function App() {
@@ -44,6 +45,14 @@ function App() {
 		dispatch(setDefaultTheme());
 	  }
     console.log(val);*/
+    const dispatch=useDispatch();
+
+  useEffect(()=>{
+    dispatch(UserProfile());
+  },[dispatch]);
+  const state=useSelector(state=>state?.users);
+  const {Profile}=state;
+
   return (
     <>
     <Router>
@@ -61,8 +70,8 @@ function App() {
   <Route path='/dashboard' element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
   <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
   <Route path='/viewexpense' element={<ProtectedRoute><ViewExpense/></ProtectedRoute>}/>
-  <Route path='/seeexpense' element={<ProtectedRoute><ViewExpense/></ProtectedRoute>}/>
-  <Route path='/seeincome' element={<ProtectedRoute><ViewIncome/></ProtectedRoute>}/>
+  <Route path='/seeexpense' element={<ProtectedRoute>{Profile?.isAdmin===true?<ViewExpenseData/>:<ViewExpense/>}</ProtectedRoute>}/>
+  <Route path='/seeincome' element={<ProtectedRoute>{Profile?.isAdmin===true?<ViewAllIncome/>:<ViewIncome/>}</ProtectedRoute>}/>
   <Route path='/report' element={<ProtectedRoute><ContactFrom/></ProtectedRoute>}/>
   <Route path='/admin' element={<ProtectedRoute><AdminDashboard1></AdminDashboard1></ProtectedRoute>}/>
   <Route path='/allexpense' element={<ProtectedRoute><ViewExpenseData/></ProtectedRoute>}/>

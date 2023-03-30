@@ -56,6 +56,12 @@ useEffect(()=>{
   dispatch(fetchAllIncome(page))
 },[page]);
  console.log(page);
+
+ const rowsPerPage = 3;
+ const pageCount = Math.ceil(Profile?.incomes.length / rowsPerPage);
+ const startIndex = (page - 1) * rowsPerPage;
+const endIndex = startIndex + rowsPerPage;
+const currentincomes = Profile?.incomes.slice(startIndex, endIndex);
   return (
     <>
     
@@ -100,11 +106,11 @@ useEffect(()=>{
   </thead>
   <tbody>
     <>
-    {incomeList?.length <= 0 ? (
+    {currentincomes?.length <= 0 ? (
                       <h2>Noincome Found</h2>
                     ) :
     
-      (incomeList?.docs?.map(exp=>(
+      (currentincomes?.map(exp=>(
         <IncomeTable items={exp} key={exp?.id}/>
       ))
     )}
@@ -114,10 +120,10 @@ useEffect(()=>{
 </table>
 <>
 {
- incomeList?.docs?.length>=1 &&(
+ Profile?.incomes?.length>=1 &&(
     <Pagination
     setPage={setPage}
-    items={ Math.ceil((incomeList?.totalDocs)/(incomeList?.limit))}
+    items={Math.ceil((Profile?.incomes?.length)/(3))}
     page={page}
     limit={incomeList?.limit}
      />
