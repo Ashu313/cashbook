@@ -189,15 +189,15 @@ var data = {
             <div className="cards">
                 <div className="card">
                     <div className="card-content">
-                    {Array.isArray(expense) && expense?.length > 0?
+
                     <>
                      <p>Average Expense:<span>{expense?.[0]?.averageExp}</span></p>
                      <p>min Expense:<span>{expense?.[0]?.minExp}</span></p>
                      <p>max Expense:<span>{expense?.[0]?.maxExp}</span></p>
                      <p>expenseRecord:<span>{expense?.[0]?.totalRecordExp}</span></p>
                      </>
-                    :"emeptu"
-}
+                
+
 </div>
                    
                     <button type="button" >View Expense</button>
