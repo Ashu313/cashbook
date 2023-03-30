@@ -1,0 +1,10 @@
+
+.pagination{
+    justify-content: center;
+    position: sticky;
+}
+tbody, td, tfoot, th, thead, tr {
+    border-color: inherit;
+    border-style: solid;
+    border-width: initial;
+}

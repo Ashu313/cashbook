@@ -152,7 +152,7 @@ var data = {
     
     <div className={navbar?'sidebar':'sidebar active'}>
         <ul>
-        <li><a href="/dashboard">
+        <li><a href={Profile?.isAdmin===true?"admin":"/"}>
             <i className="fas fa-th-large"
             ></i>Dashboard</a></li>
              <li><a href="wallet">
@@ -162,11 +162,13 @@ var data = {
                 <a href="report">
             <i className="fas fa-phone"
             ></i>Report</a></li>
+          
               <li>
-                <a href="/seeexpense">
+              <a href={Profile?.isAdmin===true?"allexpense":"seeexpense"}>
               <i class='bx bx-list-ul' ></i>Expense</a></li>
               <li>
-              <a href="/seeincome">
+            
+              <a href={Profile?.isAdmin===true?"allincome":"seeincome"}>
               <i class='bx bx-list-ul' ></i>Income</a></li>
               <li>
                 <a href="report">
@@ -184,6 +186,38 @@ var data = {
       
         </div>
         <div className="main">
+        {Profile?.isAdmin?
+        <>        <div className="cards">
+                <div className="card">
+                    <div className="card-content">
+
+                    <>
+                     <p>Average Expense:<span>{expense?.[0]?.averageExp}</span></p>
+                     <p>min Expense:<span>{expense?.[0]?.minExp}</span></p>
+                     <p>max Expense:<span>{expense?.[0]?.maxExp}</span></p>
+                     <p>expenseRecord:<span>{expense?.[0]?.totalRecordExp}</span></p>
+                     </>
+                
+
+</div>
+                   
+                    <button type="button" >View Expense</button>
+                </div>
+                  
+            
+                   <div className="card">
+                    <div className="card-content">
+                    <p>Average income:<span>{income?.[0]?.averageinc}</span></p>
+                     <p>min income:<span>{income?.[0]?.mininc}</span></p>
+                     <p>max income:<span>{income?.[0]?.maxinc}</span></p>
+                     <p>incomeRecord:<span>{income?.[0]?.totalRecordinc}</span></p>
+                    </div>
+                  
+                </div>
+            </div>
+            </>
+            :
+            <>
             <div className="cards">
                 <div className="card">
                     <div className="card-content">
@@ -227,7 +261,11 @@ var data = {
                     <i class='bx bx-cart-alt cart'></i>
                     </div>
                 </div>
+                
+        
             </div>
+            </>
+}
             <div class="charts">
                 <div className="chart">
                     <h2>Earning expenses</h2>

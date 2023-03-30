@@ -7,7 +7,8 @@ import { UserProfile } from '../../../redux/slices/users/userslice';
 
 
 
-   
+    //check if user is loggin
+
     
     const AdminProtectedRoute =({children})=>{
 
@@ -18,16 +19,17 @@ import { UserProfile } from '../../../redux/slices/users/userslice';
     const state=useSelector(state=>state?.users);
   
     const{Profile}=state
+    console.log(Profile?.isAdmin);
+    console.log(children);
   
     return (
 
-        Profile?.isAdmin?children:<Navigate to='/admin'></Navigate>
+        Profile?.isAdmin===false?children:<Navigate to='/allincome'></Navigate>
     //remaining aruement as a parmeter;
     
     );
       //check if user is loggin
       
     };
-
 
 export default AdminProtectedRoute;

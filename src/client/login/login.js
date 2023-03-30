@@ -3,7 +3,7 @@ import  { useEffect } from 'react'
 import "./login.css";
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { LoginAction } from '../../redux/slices/users/userslice';
+import { LoginAction, UserProfile } from '../../redux/slices/users/userslice';
 import { useNavigate } from 'react-router-dom';
 import { ColorRing } from 'react-loader-spinner';
 
@@ -23,6 +23,11 @@ const Login=()=>
 	const val=localStorage.getItem('theme');
 
 	const dispatch=useDispatch();
+	useEffect(()=>{
+		dispatch(UserProfile()); 
+	 },[dispatch]);
+	 const state=useSelector(state=>state?.users);
+	 const {Profile}=state;
 	if (val === 'dark') {
 		console.log("S");
 		dispatch(setDarkTheme());

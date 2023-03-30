@@ -186,34 +186,7 @@ var data = {
       
         </div>
         <div className="main">
-            <div className="cards">
-                <div className="card">
-                    <div className="card-content">
-
-                    <>
-                     <p>Average Expense:<span>{expense?.[0]?.averageExp}</span></p>
-                     <p>min Expense:<span>{expense?.[0]?.minExp}</span></p>
-                     <p>max Expense:<span>{expense?.[0]?.maxExp}</span></p>
-                     <p>expenseRecord:<span>{expense?.[0]?.totalRecordExp}</span></p>
-                     </>
-                
-
-</div>
-                   
-                    <button type="button" >View Expense</button>
-                </div>
-                  
-            
-                   <div className="card">
-                    <div className="card-content">
-                    <p>Average income:<span>{income?.[0]?.averageinc}</span></p>
-                     <p>min income:<span>{income?.[0]?.mininc}</span></p>
-                     <p>max income:<span>{income?.[0]?.maxinc}</span></p>
-                     <p>incomeRecord:<span>{income?.[0]?.totalRecordinc}</span></p>
-                    </div>
-                  
-                </div>
-            </div>
+        
             <div class="charts">
                 <div className="chart">
                     <h2>Earning expenses</h2>
