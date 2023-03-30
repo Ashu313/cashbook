@@ -1,8 +1,32 @@
+.container-expense{
+    position: fixed;
+    width: 100%;
+}
+.flex1{
+display: flex;
+gap: 1rem;
+top:-10px;
+position: absolute;
+right: 0;
+}
+span{
+    color:white;
+}
+.card-content p{
+    color: black;
+}
 .user{
     width: 50px;
     height: 50px;
     position: relative;
     justify-self: right;
+    cursor: pointer;
+}
+.btn{
+    display: flex;
+    /* justify-content: center; */
+   
+    padding: 1rem;
 }
 .user img{
     position: absolute;
@@ -11,15 +35,12 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
-}
-span{
-    color: white;
-}
-.card-content p{
-    font-size: 30px;
+    cursor: pointer;
 }
 .topbar{
     position: fixed;
+    top: 0;
+    left: 0;
     background-color: black;
     width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
@@ -41,7 +62,7 @@ span{
     outline: none;
     border: none;
     border-radius: 10px;
-    background-color: wheat;
+    background-color: white;
     margin-top: 10px;
 
 }
@@ -50,11 +71,13 @@ span{
     right: 15px;
     top: 15px;
     cursor: pointer;
+    font-size: 30px;
 }
 /*sidebar*/
 .sidebar{
     position: fixed;
     top: 60px;
+    left: 0;
     width: 260px;
     background-color: black;
     overflow-x: hidden;
@@ -64,6 +87,7 @@ span{
 }
 .sidebar ul{
     margin-top: 20px;
+    list-style: none;
 }
 .sidebar ul li{
     width: 100%;
@@ -93,10 +117,11 @@ span{
     min-height: calc(100vh - 60px);
     position: absolute;
     top: 60px;
+    /* width: auto; */
     width: calc(100% - 260px);
     left: 260px;
-   width: auto;
-   z-index: -1;
+    overflow: scroll;
+    z-index: -1;
 
 }
 .cards{
@@ -111,7 +136,8 @@ padding: 20px;
 display: flex;
 align-items: center;
 justify-content: space-between;
-
+/*background-color: #36454F;*/
+background-color: #0584d8;
 
 border-radius: 10px;
 box-shadow: rgba(0, 0, 0, 0.8);
@@ -121,6 +147,12 @@ box-shadow: rgba(0, 0, 0, 0.8);
     font-weight: 300px;
     color: black;
 }
+.dark-mode .number{
+    color: white;
+}
+.dark-mode .card-name{
+    color:white;
+}
 .card-name{
     font-size: 45px;
     color: black;
@@ -128,6 +160,11 @@ box-shadow: rgba(0, 0, 0, 0.8);
 .icon-box i{
     font-size: 45px;
     color: black;
+}
+i{
+    font-size: 40px;
+    position: relative;
+    top: 10px;
 }
 /*charts*/
 .charts{
@@ -137,7 +174,16 @@ box-shadow: rgba(0, 0, 0, 0.8);
     width: 100%;
     padding: 20px;
     padding-top: 0;
+     
 }
+/*.charts{
+   display: -webkit-inline-flex;
+    grid-gap: 20px;
+    width: 50%;
+    padding: 20px;
+    padding-top: 0;
+     
+}*/
 .chart{
     padding: 20px;
     border-radius: 10px;
@@ -153,37 +199,66 @@ box-shadow: rgba(0, 0, 0, 0.8);
     font-size: 40px;
     margin-top: 10px;
 }
+.menu-icons{
+    display: none;;
+}
 @media (max-width:1120px)
 {
+
+    .menu-icons{
+        display: block;;
+    }
+    .sidebar.active{
+        display: none;
+    }
     .sidebar{
-        width: 60px;
+        width:100%;
     }
     .main{
         width: calc(100% - 60px);
         left: 60px;
     }
+    
+    
 }
 @media (max-width:880px)
 {
+    .sidebar.active{
+        display: none;
+    }
+    .search1.active{
+        display: none;
+    }
+    .search1{
+    position: relative;
+    width: 60%;
+    justify-self: center;
+    }
+    .menu-icons{
+        display: block;
+    }
     .cards{
         width: 100%;
         grid-template-columns: repeat(2,1fr);
         padding: 35px 20px;
-        display: grid;
         grid-gap: 20px;
     }
     .charts{
         grid-template-columns: 1fr;
     }
-    
-}
-@media (max-width:500px)
-{
-    .sidebar{
-        width: 60px;
-    }
     .main{
-      
-        left: 60px;
+        width: 100%;
+    
+    min-height: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    /* width: auto; */
+   
+    /* left: 260px; */
+    overflow: scroll;
+    z-index: -1;
     }
+
+    
 }

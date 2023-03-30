@@ -25,6 +25,7 @@ import ContactFrom from './client/Report/Report';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setDarkTheme, setDefaultTheme } from "./redux/slices/darkmode/darkmode"
+import ViewExpenseData from './client/Adminexpense/viewExpense';
 
 //use selector select the element from the redux tool kit or from store
 function App() {
@@ -63,6 +64,7 @@ function App() {
   <Route path='/seeincome' element={<ProtectedRoute><ViewIncome/></ProtectedRoute>}/>
   <Route path='/report' element={<ProtectedRoute><ContactFrom/></ProtectedRoute>}/>
   <Route path='/admin' element={<AdminProtectedRoute><AdminDashboard1></AdminDashboard1></AdminProtectedRoute>}/>
+  <Route path='/allexpense' element={<AdminProtectedRoute><ViewExpenseData/></AdminProtectedRoute>}/>
 </Routes>
     </Router>
    

@@ -1,0 +1,33 @@
+
+.pagination{
+    justify-content: center;
+    position: sticky;
+}
+tbody, td, tfoot, th, thead, tr {
+    border-color: inherit;
+    border-style: solid;
+    border-width: initial;
+}
+.heading{
+        display: flex; 
+    flex-wrap: wrap; 
+    gap: 0.5rem; 
+    justify-content: center; 
+  padding: 64px 0; 
+     text-align: center;
+}
+h1{
+    text-align: center;
+}
+.heading span{
+    background: rgba(255,165,0,.2);
+    border-radius: 8px;
+    color: orange;
+    font-size: 50px;
+    padding: 10px;
+
+}
+.space{
+   opacity: 0;
+    
+}
