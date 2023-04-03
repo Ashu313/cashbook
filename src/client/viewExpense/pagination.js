@@ -10,14 +10,25 @@ import "./pagination.css";
 const Pagination=({items,setPage,page})=>{
  
     const history = useNavigate();
+ 
+    const arr = Array.from(Array(items).keys());
+   
   const  handleChange=(val)=>{
    
   
-    setPage(val);
+    
+    console.log(items);
+    
+    
+
+    
     history(`?page=${val}`);
+    setPage(val);
+    
+   
   }
  // console.log(items,page);
-  const arr = Array.from(Array(items).keys());
+ 
   return(
       <>
        <nav aria-label="...">

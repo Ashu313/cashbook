@@ -24,11 +24,12 @@ const handleEdit=(items)=>{
   setEditingExpense(!editingExpense);
   console.log(items?.id);
 }
+
 async function handleDelete(id) {
   
-  //console.log("hdccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc")
   //console.log(items?.id);
   //console.log(id);
+  
  dispatch(deleteExpenseAction(id));
  
   dispatch(fetchAllExpense());
