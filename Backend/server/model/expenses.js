@@ -51,7 +51,8 @@ const expensesSchema=mongoose.Schema({
     },
     toObject:{
        virtuals:true,
-    }
+    },
+    timestamps: true,
 }
 
 )

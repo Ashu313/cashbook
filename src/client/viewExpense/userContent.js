@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import AddExpense from "../expenseTable/expense";
 import { fetchAllExpense } from "../../redux/slices/expense/expense";
-import { EditExpense } from "../../redux/slices/expense/expense";
 import { deleteExpenseAction } from "../../redux/slices/expense/expense";
 
 import { useState } from "react";
@@ -12,9 +10,7 @@ const ExpenseTable=({items,toggleIncomeBox})=>{
 const dispatch = useDispatch();
 const [editingExpense, setEditingExpense] = useState(null);
 const [openId, setOpenId] = useState(null);
-/*useEffect(()=>{
-  dispatch(fetchAllExpense());
-},[dispatch]);*/
+
 
 const handleEdit=(items)=>{
  
@@ -27,8 +23,7 @@ const handleEdit=(items)=>{
 
 async function handleDelete(id) {
   
-  //console.log(items?.id);
-  //console.log(id);
+ 
   
  dispatch(deleteExpenseAction(id));
  
@@ -36,11 +31,7 @@ async function handleDelete(id) {
  dispatch(UserProfile());
 }
 
-    const state=useSelector(state=>state?.expense)
-    //const{expenseList}=state;
-   // console.log(state);
-    //console.log(expenseList?.docs[0]?.id);
-    //console.log(items?.id);
+   
     return(
         <>
         
@@ -49,7 +40,7 @@ async function handleDelete(id) {
       
       <td>{items?.description}</td>
       <td>{items?.amount}</td>
-      <td>{items?.date.split("T")[0].split("-").reverse().join("-")} at {items?.date.split("T")[1].substring(0, 5)}</td>
+      <td>{items?.createdAt.split("T")[0].split("-").reverse().join("-")} at {items?.createdAt.split("T")[1].substring(0, 5)}</td>
 
     <td><button class="btn  btn-sm btn-success" onClick={() => handleEdit(items?.id)}>EDIT<i class="bi bi-pencil-square"></i></button></td>
       <td><button class="btn btn-sm btn-danger" onClick={() => handleDelete(items?.id)}>DELETE<i class="bi bi-trash"></i></button></td>

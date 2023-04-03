@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {  MDBPagination } from 'mdb-react-ui-kit';
 import { fetchAllExpense } from '../../redux/slices/expense/expense';
 import { useDispatch,useSelector } from 'react-redux';
 import { UserProfile } from '../../redux/slices/users/userslice';
@@ -9,8 +8,7 @@ import AddExpense from '../expenseTable/expense';
 import { EditExpense } from '../../redux/slices/expense/expense';
 import "./pagination.css"
 import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
-import axios from 'axios';
-import { current } from '@reduxjs/toolkit';
+
 
 
 
@@ -20,7 +18,6 @@ const ViewExpense=()=>
  
   const [showExpense,setShowExpense]=useState(false);
    const [filter1,setFilter]=useState("");
-   const [PerPage,setPerPage]=useState(3);
   
  
   const toggleExpense=()=>{
@@ -63,17 +60,9 @@ useEffect(()=>{
     dispatch(UserProfile());
   },[dispatch]);
   
-  //console.log(state);
+ 
   console.log(Profile?.expenses);
-  const expense=useSelector(state=>state?.expense);
-  const {expenseList}=expense;
-  /////console.log(expenseList);
-  //console.log(expenseList?.docs);
-  const {Expenses}=state;
-  //console.log(Expenses);
-  const state1=useSelector(state=>state?.users);
-  //const{expenseUpdated}=state1;
-  //console.log(state);
+  
   const rowsPerPage = 3;   
  
   const filteredData =Profile?.expenses.filter(item => {
@@ -84,14 +73,14 @@ useEffect(()=>{
   console.log(filteredData)
 
   
-   const pageCount = Math.ceil(Profile?.expenses.length / rowsPerPage);
+
   const startIndex = (page-1) * rowsPerPage;
 const endIndex = startIndex + rowsPerPage;
 
 
 const SortedData=filteredData?.sort((a, b) => {
   // Replace 'dateField' with the field name that contains your date data
-  return new Date(b?.date) - new Date(a?.date);
+  return new Date(b?.createdAt) - new Date(a?.createdAt);
 });
 const currentExpenses = SortedData?.slice(startIndex,endIndex);
 
