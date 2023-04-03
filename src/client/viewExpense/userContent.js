@@ -7,6 +7,7 @@ import { EditExpense } from "../../redux/slices/expense/expense";
 import { deleteExpenseAction } from "../../redux/slices/expense/expense";
 
 import { useState } from "react";
+import { UserProfile } from "../../redux/slices/users/userslice";
 const ExpenseTable=({items,toggleIncomeBox})=>{
 const dispatch = useDispatch();
 const [editingExpense, setEditingExpense] = useState(null);
@@ -28,9 +29,10 @@ async function handleDelete(id) {
   //console.log("hdccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc")
   //console.log(items?.id);
   //console.log(id);
- await dispatch(deleteExpenseAction(id));
+ dispatch(deleteExpenseAction(id));
  
- await dispatch(fetchAllExpense());
+  dispatch(fetchAllExpense());
+ dispatch(UserProfile());
 }
 
     const state=useSelector(state=>state?.expense)

@@ -10,15 +10,18 @@ import { EditExpense } from '../../redux/slices/expense/expense';
 import "./pagination.css"
 import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
 import axios from 'axios';
+import { current } from '@reduxjs/toolkit';
 
 
 
 const ViewExpense=()=>
  {
   const[page,setPage]=useState(1);
-  const [openId, setOpenId] = useState(null);
+ 
   const [showExpense,setShowExpense]=useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+   const [filter1,setFilter]=useState("");
+   const [PerPage,setPerPage]=useState(3);
+  
  
   const toggleExpense=()=>{
     setShowExpense(!showExpense)
@@ -47,37 +50,51 @@ const ViewExpense=()=>
 
 
 
-  useEffect(()=>{
-    dispatch(UserProfile());
-  },[dispatch]);
-
+ 
  
 useEffect(()=>{
   dispatch(EditExpense());
 },[dispatch]);
  
- const handleChange=(event)=>{
-  setSearchQuery(event.target.value)
- }
+
   const state=useSelector(state=>state?.users);
   const {Profile}=state;
+    useEffect(()=>{
+    dispatch(UserProfile());
+  },[dispatch]);
+  
   //console.log(state);
   console.log(Profile?.expenses);
   const expense=useSelector(state=>state?.expense);
   const {expenseList}=expense;
-  console.log(expenseList);
-  console.log(expenseList?.docs);
+  /////console.log(expenseList);
+  //console.log(expenseList?.docs);
   const {Expenses}=state;
-  console.log(Expenses);
+  //console.log(Expenses);
   const state1=useSelector(state=>state?.users);
-  const{expenseUpdated}=state1;
-  console.log(state);
-  const rowsPerPage = 3;
-  const pageCount = Math.ceil(Profile?.expenses.length / rowsPerPage);
-  const startIndex = (page - 1) * rowsPerPage;
-const endIndex = startIndex + rowsPerPage;
-const currentExpenses = Profile?.expenses.slice(startIndex, endIndex);
+  //const{expenseUpdated}=state1;
+  //console.log(state);
+  const rowsPerPage = 3;   
+ 
+  const filteredData =Profile?.expenses.filter(item => {
+    const nameMatch = item?.title.toLowerCase().includes(filter1.toLowerCase());
+    const emailMatch = item?.description.toLowerCase().includes(filter1.toLowerCase());
+    return nameMatch || emailMatch;
+  });
 
+  
+   const pageCount = Math.ceil(Profile?.expenses.length / rowsPerPage);
+  const startIndex = (page-1) * rowsPerPage;
+const endIndex = startIndex + rowsPerPage;
+
+const currentExpenses = filteredData?.slice(startIndex,endIndex);
+
+const handleFilter = event => {
+  
+  setFilter(event.target.value);
+};
+  
+  
 
   return (
     <>
@@ -87,6 +104,12 @@ const currentExpenses = Profile?.expenses.slice(startIndex, endIndex);
      
    </nav>
     <div className="table-content">
+
+    <div className="search">
+            <input type="text" placeholder="search here" value={filter1} onChange={handleFilter}></input>
+            <button><label for="search" ><i className="fas fa-search"></i></label></button>
+        </div>
+            
     <h1 class="heading">
                 <span>Y</span>
                 <span>O</span>
@@ -136,10 +159,10 @@ const currentExpenses = Profile?.expenses.slice(startIndex, endIndex);
 </table>
 <>
 {
-   Profile?.expenses?.length>=1 &&(
+   currentExpenses?.length>=1 &&(
     <Pagination
     setPage={setPage}
-    items={ Math.ceil((Profile?.expenses?.length)/(3))}
+    items={Math.ceil((filteredData?.length)/(3))}
     page={page}
      />
   )

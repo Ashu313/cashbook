@@ -46,12 +46,12 @@ function App() {
 	  }
     console.log(val);*/
     const dispatch=useDispatch();
-
+    const state=useSelector(state=>state?.users);
+    const {Profile}=state;
   useEffect(()=>{
     dispatch(UserProfile());
   },[dispatch]);
-  const state=useSelector(state=>state?.users);
-  const {Profile}=state;
+   
 
   return (
     <>
@@ -70,8 +70,8 @@ function App() {
   <Route path='/dashboard' element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
   <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
   <Route path='/viewexpense' element={<ProtectedRoute><ViewExpense/></ProtectedRoute>}/>
-  <Route path='/seeexpense' element={<ProtectedRoute>{Profile?.isAdmin===true?<ViewExpenseData/>:<ViewExpense/>}</ProtectedRoute>}/>
-  <Route path='/seeincome' element={<ProtectedRoute>{Profile?.isAdmin===true?<ViewAllIncome/>:<ViewIncome/>}</ProtectedRoute>}/>
+  <Route path='/seeexpense' element={<ProtectedRoute>{Profile && Profile.isAdmin?<ViewExpenseData/>:<ViewExpense/>}</ProtectedRoute>}/>
+  <Route path='/seeincome' element={<ProtectedRoute>{Profile && Profile.isAdmin?<ViewAllIncome/>:<ViewIncome/>}</ProtectedRoute>}/>
   <Route path='/report' element={<ProtectedRoute><ContactFrom/></ProtectedRoute>}/>
   <Route path='/admin' element={<ProtectedRoute><AdminDashboard1></AdminDashboard1></ProtectedRoute>}/>
   <Route path='/allexpense' element={<ProtectedRoute><ViewExpenseData/></ProtectedRoute>}/>

@@ -3,6 +3,8 @@ import "./expense.css";
 import { Formik } from "formik";
 import { useFormik } from "formik";
 import * as yup from 'yup';
+import { UserProfile } from '../../redux/slices/users/userslice';
+
 import { CreateExpense, fetchAllExpense } from "../../redux/slices/expense/expense";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
@@ -22,7 +24,7 @@ const AddExpense=({ items,expense,showIncomeBox, toggleIncomeBox })=>{
  
     const dispatch=useDispatch();
     const val=localStorage.getItem('theme');
-
+    const [loading, setLoading] = useState(false);
 
 	if (val === 'dark') {
 		console.log("S");
@@ -37,6 +39,8 @@ const AddExpense=({ items,expense,showIncomeBox, toggleIncomeBox })=>{
 
     console.log(items?.id);
     
+  
+  
   const expenses=useSelector(state=>state?.expense);
   console.log(expenses)
   const { expLoading, expAppErr, expServerErr, isExpCreated } = expenses;
@@ -50,19 +54,24 @@ const AddExpense=({ items,expense,showIncomeBox, toggleIncomeBox })=>{
             },
 		
 		onSubmit:async (values,{resetForm})=>{
-            await dispatch(CreateExpense(values))
+     
+             dispatch(CreateExpense(values))
 			console.log('sjs');
 			console.log(values);
             resetForm();
 		
             toggleIncomeBox(false);
-            await dispatch(fetchAllExpense());
+            dispatch(fetchAllExpense());
+            dispatch(UserProfile());
+             console.log("heheh");
 			 
 		},
 		validationSchema:formSchema,
 		
 		
 	})
+ 
+  console.log('p');
     useEffect(() => {
         if (isExpCreated) {
           Navigate("user-profile-expenses", undefined);
@@ -89,7 +98,9 @@ const AddExpense=({ items,expense,showIncomeBox, toggleIncomeBox })=>{
                  <div className="add-button">
                      <button type="submit" >Record Expense</button>
                  </div>
-                 </form>    
+                 </form>   
+
+         {loading &&<div className="loader">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus adipisci sint optio odio maiores perspiciatis aut, debitis doloremque animi facilis quisquam laudantium tempora beatae a pariatur! Est vero odio hic.</div>} 
         </div>
     </section>
     </>

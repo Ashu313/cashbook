@@ -49,9 +49,13 @@ span{
     grid-template-columns: 2fr 10fr 0.4fr 1fr;
 }
 .search{
-    position: relative;
-    width: 60%;
-    justify-self: center;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    right: 0;
+  
+    top: 0;
+
 }
 .search input{
     width: 100%;
