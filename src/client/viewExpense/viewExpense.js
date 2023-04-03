@@ -88,6 +88,10 @@ useEffect(()=>{
 const endIndex = startIndex + rowsPerPage;
 
 const currentExpenses = filteredData?.slice(startIndex,endIndex);
+currentExpenses?.sort((a, b) => {
+  // Replace 'dateField' with the field name that contains your date data
+  return new Date(b?.date) - new Date(a?.date);
+});
 
 const handleFilter = event => {
   

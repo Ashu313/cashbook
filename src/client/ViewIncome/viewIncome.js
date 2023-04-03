@@ -19,6 +19,8 @@ const ViewIncome=()=>
  {
 
   const [showIncomeBox, setShowIncomeBox] = useState(false);
+  const [showExpense,setShowExpense]=useState(false);
+  const [filter1,setFilter]=useState("");
 
   // Function to toggle the state of the Income box
   const toggleIncomeBox = () => {
@@ -58,10 +60,28 @@ useEffect(()=>{
  console.log(page);
 
  const rowsPerPage = 3;
- const pageCount = Math.ceil(Profile?.incomes.length / rowsPerPage);
+
+ 
+ const filteredData =Profile?.incomes.filter(item => {
+   const nameMatch = item?.title.toLowerCase().includes(filter1.toLowerCase());
+   const emailMatch = item?.description.toLowerCase().includes(filter1.toLowerCase());
+   return nameMatch || emailMatch;
+ });
+
+ 
  const startIndex = (page - 1) * rowsPerPage;
 const endIndex = startIndex + rowsPerPage;
-const currentincomes = Profile?.incomes.slice(startIndex, endIndex);
+const currentincomes = filteredData?.slice(startIndex, endIndex);
+filteredData?.sort((a, b) => {
+  return new Date(b.date) - new Date(a.date);
+});
+
+
+console.log(filteredData)
+const handleFilter = event => {
+  
+  setFilter(event.target.value);
+};
   return (
     <>
     
@@ -69,6 +89,11 @@ const currentincomes = Profile?.incomes.slice(startIndex, endIndex);
     <a href='/'><button style={{position:'initial'}}>Dashboard</button></a>
     </nav>
     <div className="table-content">
+    <div className="search">
+            <input type="text" placeholder="search here" value={filter1} onChange={handleFilter}></input>
+           <label for="search" ><i className="fas fa-search"></i></label>
+        </div>
+            
     <h1 class="heading">
                 <span>Y</span>
                 <span>O</span>
@@ -120,10 +145,10 @@ const currentincomes = Profile?.incomes.slice(startIndex, endIndex);
 </table>
 <>
 {
- Profile?.incomes?.length>=1 &&(
+ currentincomes?.length>=1 &&(
     <Pagination
     setPage={setPage}
-    items={Math.ceil((Profile?.incomes?.length)/(3))}
+    items={Math.ceil((filteredData?.length)/(3))}
     page={page}
     limit={incomeList?.limit}
      />

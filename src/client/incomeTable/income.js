@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import { createIncome, fetchAllIncome } from "../../redux/slices/income/income";
+import { UserProfile } from "../../redux/slices/users/userslice";
 
 
 const formSchema=yup.object({
@@ -24,8 +25,7 @@ const AddIncome=({ showIncomeBox, toggleIncomeBox })=>{
     const [inc,setIncome]=useState(false);
     const dispatch=useDispatch();
     const income=useSelector(state=>state?.income);
-    console.log(income);
-    console.log('hello_baby');
+
    // const Incomes=useSelector(state=>state?.income);
  const {  IncCreated } =income;
   //  console.log(Incomes);
@@ -36,13 +36,14 @@ const AddIncome=({ showIncomeBox, toggleIncomeBox })=>{
           description:"",
           },
           onSubmit:async(values,{resetForm})=>{
-              await dispatch(createIncome(values))
+            dispatch(createIncome(values))
               resetForm();
               setIncome(showIncomeBox)
               toggleIncomeBox(false);
-              console.log('sjs');
-              console.log(values);
-             await dispatch(fetchAllIncome());
+            
+           
+           dispatch(fetchAllIncome());
+             dispatch(UserProfile());
               
                
           },

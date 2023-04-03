@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteIncomeAction, fetchAllIncome } from "../../redux/slices/income/income";
+import { UserProfile } from "../../redux/slices/users/userslice";
 
 const IncomeTable=({items})=>{
     const dispatch=useDispatch();
@@ -10,6 +11,7 @@ const IncomeTable=({items})=>{
         console.log(id);
         await dispatch(deleteIncomeAction(id));
         await dispatch(fetchAllIncome());
+        dispatch(UserProfile());
     }
     return(
         <>
