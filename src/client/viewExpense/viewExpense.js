@@ -81,17 +81,19 @@ useEffect(()=>{
     const emailMatch = item?.description.toLowerCase().includes(filter1.toLowerCase());
     return nameMatch || emailMatch;
   });
+  console.log(filteredData)
 
   
    const pageCount = Math.ceil(Profile?.expenses.length / rowsPerPage);
   const startIndex = (page-1) * rowsPerPage;
 const endIndex = startIndex + rowsPerPage;
 
-const currentExpenses = filteredData?.slice(startIndex,endIndex);
-currentExpenses?.sort((a, b) => {
+
+const SortedData=filteredData?.sort((a, b) => {
   // Replace 'dateField' with the field name that contains your date data
   return new Date(b?.date) - new Date(a?.date);
 });
+const currentExpenses = SortedData?.slice(startIndex,endIndex);
 
 const handleFilter = event => {
   

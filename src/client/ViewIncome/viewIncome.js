@@ -71,10 +71,11 @@ useEffect(()=>{
  
  const startIndex = (page - 1) * rowsPerPage;
 const endIndex = startIndex + rowsPerPage;
-const currentincomes = filteredData?.slice(startIndex, endIndex);
-filteredData?.sort((a, b) => {
-  return new Date(b.date) - new Date(a.date);
+const SortedData=filteredData?.sort((a, b) => {
+  // Replace 'dateField' with the field name that contains your date data
+  return new Date(b?.createdAt) - new Date(a?.createdAt);
 });
+const currentincomes = SortedData?.slice(startIndex, endIndex);
 
 
 console.log(filteredData)
