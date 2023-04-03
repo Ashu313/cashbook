@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import {  MDBPagination } from 'mdb-react-ui-kit';
+
 import { fetchAllIncome } from '../../redux/slices/income/income';
 import { useDispatch,useSelector } from 'react-redux';
 import { UserProfile } from '../../redux/slices/users/userslice';
 
 import Pagination from './pagination';
-import AddExpense from '../expenseTable/expense';
+
 
 import IncomeTable from './userContent';
 import AddIncome from '../incomeTable/income';
@@ -19,7 +19,7 @@ const ViewIncome=()=>
  {
 
   const [showIncomeBox, setShowIncomeBox] = useState(false);
-  const [showExpense,setShowExpense]=useState(false);
+ 
   const [filter1,setFilter]=useState("");
 
   // Function to toggle the state of the Income box
@@ -49,10 +49,9 @@ const ViewIncome=()=>
 
   const state=useSelector(state=>state?.users);
   const {Profile}=state;
-  //console.log(state);
+ 
   const income=useSelector(state=>state?.income);//store wala
   const {incomeList}=income;
-//console.log(Math.ceil((incomeList?.totalDocs)/(incomeList?.limit)));
 const[page,setPage]=useState(1);
 useEffect(()=>{
   dispatch(fetchAllIncome(page))

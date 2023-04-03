@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./income.css";
 
 
-import { Formik } from "formik";
+
 import * as yup from 'yup';
 
 import { useFormik } from "formik";
