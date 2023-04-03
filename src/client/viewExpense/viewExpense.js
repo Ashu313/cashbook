@@ -107,7 +107,7 @@ const handleFilter = event => {
 
     <div className="search">
             <input type="text" placeholder="search here" value={filter1} onChange={handleFilter}></input>
-            <button><label for="search" ><i className="fas fa-search"></i></label></button>
+           <label for="search" ><i className="fas fa-search"></i></label>
         </div>
             
     <h1 class="heading">

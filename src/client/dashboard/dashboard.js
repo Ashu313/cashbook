@@ -174,11 +174,7 @@ var data = {
                 <a href="report">
             <i className="fas fa-th-large"
             ></i>Wallet</a></li>
-              
-              <div className="search">
-            <input type="text" placeholder="search here"></input>
-            <label for="search"><i className="fas fa-search"></i></label>
-        </div>
+          
             
             
         </ul>
