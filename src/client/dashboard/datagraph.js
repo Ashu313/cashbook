@@ -23,11 +23,13 @@ const dataGraph=({income,expenses})=>{
             'rgb(255, 205, 86)'
           ],
           hoverOffset: 4
-        }]
+        }],
+        
       };
       
       const data1 = {
         labels: ['january','february','march','april','may','june','july','august','september','october','november','december'],
+
         
         datasets: [{
           label: 'My First Dataset',
@@ -35,9 +37,27 @@ const dataGraph=({income,expenses})=>{
           fill: false,
           borderColor: 'rgb(75, 192, 192)',
           tension: 0.1,
-          fontColor:'white'
-        }]
+          Color:'white',
+          backgroundColor: '#9BD0F5',
+        }],
+          options :{
+          plugins: {
+            legend: {
+              labels: {
+                color: 'white', // set the color of the labels to white
+              },
+            },
+          },
+        },
+        
+        
       };
+   
+ 
+      
+      
+      
+      
  
       return(
         <>
@@ -50,7 +70,7 @@ const dataGraph=({income,expenses})=>{
                     </div>
                 </div>
                   <div className="chart">
-                    <h2>Earning expenses</h2>
+                    <h2>Earning expenses11111</h2>
                     <div>
                         <Doughnut data={data}
                         />
