@@ -20,7 +20,7 @@ export const CreateExpense=createAsyncThunk("expense/create",async(Expenses,{rej
         }
     }
 try{
-    const {data}=await axios.post('http://localhost:5000/api/expense',
+    const {data}=await axios.post('https://cashbook-y25s.onrender.com/api/expense',
     {
         title:Expenses?.title,
         description:Expenses?.description,
@@ -53,7 +53,7 @@ export const fetchAllExpense=createAsyncThunk("expense/fetch",async(page,{reject
     }
    
 try{
-    const {data}=await axios.get(`http://localhost:5000/api/expense?page=${page}`,config)
+    const {data}=await axios.get(`https://cashbook-y25s.onrender.com/api/expense?page=${page}`,config)
     return data;
 }
 catch(error)
@@ -82,7 +82,7 @@ export const deleteExpenseAction = createAsyncThunk(
       //http call
       try {
         const { data } = await axios.delete(
-          `http://localhost:5000/api/expense/${id}`,
+          `https://cashbook-y25s.onrender.com/api/expense/${id}`,
           config
         );
         //dispatch
@@ -110,7 +110,7 @@ export const EditExpense=createAsyncThunk("expense/edit",async(payload,{rejectWi
     }
    
 try{
-    const {data}=await axios.get(`http://localhost:5000/api/expense?${payload?.id}`,
+    const {data}=await axios.get(`https://cashbook-y25s.onrender.com/api/expense?${payload?.id}`,
     {
         firstname:payload?.firstname,
         description:payload?.description,

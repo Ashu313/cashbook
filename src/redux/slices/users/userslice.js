@@ -13,7 +13,7 @@ export const LoginAction=createAsyncThunk("users/login",async(payload,{rejectWit
         }
     }
 try{
-    const {data}=await axios.post('http://localhost:5000/api/users/login',payload,config)
+    const {data}=await axios.post('https://cashbook-y25s.onrender.com/api/users/login',payload,config)
     localStorage.setItem('userinfo',JSON.stringify(data));
     return data;
 }
@@ -37,7 +37,7 @@ export const RegisterAction=createAsyncThunk("users/register",async(payload,{rej
         }
     }
 try{
-    const {data}=await axios.post('http://localhost:5000/api/users/register',payload,config)
+    const {data}=await axios.post('https://cashbook-y25s.onrender.com/api/users/register',payload,config)
     return data;
 }
 catch(error)
@@ -61,7 +61,7 @@ export const UserProfile=createAsyncThunk("users/profile",async(id,{rejectWithVa
         }
     }
 try{
-    const {data}=await axios.get('http://localhost:5000/api/users/profile',config)
+    const {data}=await axios.get('https://cashbook-y25s.onrender.com/api/users/profile',config)
     return data;
 }
 catch(error)
@@ -85,7 +85,7 @@ export const UpdateProfile=createAsyncThunk("users/update",async(payload,{reject
         }
     }
 try{
-    const {data}=await axios.put('http://localhost:5000/api/users/profile',
+    const {data}=await axios.put('https://cashbook-y25s.onrender.com/api/users/profile',
     {
         firstname:payload?.firstname,
         email:payload?.email,

@@ -14,7 +14,7 @@ export const fetchAllAccount=createAsyncThunk("account/fetch",async(payload,{rej
         }
     }
 try{
-    const {data}=await axios.get(`http://localhost:5000/api/status`,payload,config)
+    const {data}=await axios.get(`https://cashbook-y25s.onrender.com/api/status`,payload,config)
     return data;
 }
 catch(error)
