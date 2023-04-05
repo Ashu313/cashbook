@@ -11,6 +11,7 @@ import { fetchAllAccount } from "../../redux/slices/accountDetail/account";
 import { UserProfile } from "../../redux/slices/users/userslice";
 import Profile1 from "../container/profileView/profile";
 import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
+import { ColorRing } from 'react-loader-spinner';
 
 
 
@@ -79,7 +80,7 @@ useEffect(()=>
 	
   
 const state=useSelector(state=>state?.users);
-const {Profile}=state;
+const {Profile,Loading}=state;
 //console.log(Profile);
 const account=useSelector(state=>state?.account);
 const {AccountStats}=account;
@@ -181,6 +182,24 @@ var data = {
   
       
         </div>
+        {Loading?
+				<>
+				<div className='svg-cont' style={{textAlign:'center' ,marginTop:'20%', bottom:'50%',top:'50%'}}>
+		<ColorRing
+  visible={true}
+  height="200"
+  width="200"
+  JustifyContent='center'
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/>
+</div>
+
+</>
+:
+<>
         <div className="main">
         {Profile?.isAdmin?
         <>        <div className="cards">
@@ -277,13 +296,16 @@ var data = {
                         />
                         
                     </div>
+
+                  
                 </div>
-                 
+              
 
             </div>
+            
         </div>
+      </>}
         </div>
- 
 
 
 </>

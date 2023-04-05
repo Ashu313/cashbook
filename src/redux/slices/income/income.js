@@ -19,7 +19,7 @@ export const createIncome=createAsyncThunk("income/create",async(payload,{reject
         }
     }
 try{
-    const {data}=await axios.post('https://cashbook-y25s.onrender.com/api/income',
+    const {data}=await axios.post('http://localhost:5000/api/income',
     {
         title:payload?.title,
         description:payload?.description,
@@ -52,7 +52,7 @@ export const deleteIncomeAction = createAsyncThunk(
       //http call
       try {
         const { data } = await axios.delete(
-          `https://cashbook-y25s.onrender.com/api/income/${id}`,
+          `http://localhost:5000/api/income/${id}`,
           config
         );
         //dispatch
@@ -78,7 +78,7 @@ export const fetchAllIncome=createAsyncThunk("income/fetch",async(payload,{rejec
         }
     }
 try{
-    const {data}=await axios.get(`https://cashbook-y25s.onrender.com/api/income?page=${payload}`,config)
+    const {data}=await axios.get(`http://localhost:5000/api/income?page=${payload}`,config)
     return data;
 }
 catch(error)
