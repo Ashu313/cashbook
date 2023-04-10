@@ -250,6 +250,9 @@ i{
     .charts{
         grid-template-columns: 1fr;
     }
+    .cards .card{
+        width: inherit;
+    }
     .main{
         width: 100%;
     

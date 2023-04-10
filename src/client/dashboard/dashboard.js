@@ -302,6 +302,27 @@ var data = {
               
 
             </div>
+            <div class="charts">
+                <div className="chart">
+                    <h2>Earning expenses</h2>
+                    <div>
+                          <Line
+                          data={data1}/>
+                    </div>
+                </div>
+                  <div className="chart">
+                    <h2>Earning expenses</h2>
+                    <div>
+                        <Doughnut data={data}
+                        />
+                        
+                    </div>
+
+                  
+                </div>
+              
+
+            </div>
             
         </div>
       </>}
