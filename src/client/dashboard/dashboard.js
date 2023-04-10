@@ -24,7 +24,7 @@ const data1 = {
   labels: ['january','february','march','april','may','june','july','august','september','october','november','december'],
   datasets: [{
     label: 'My First Dataset',
-    data: [65, 59, 80, 81, 56, 55, 40],
+    data: [65, 59, 80, 81, 56, 55, 40,25,88,12,98,100],
     fill: false,
     borderColor: 'rgb(75, 192, 192)',
     tension: 0.1
@@ -302,28 +302,89 @@ var data = {
               
 
             </div>
-            <div class="charts">
-                <div className="chart">
-                    <h2>Earning expenses</h2>
-                    <div>
-                          <Line
-                          data={data1}/>
-                    </div>
-                </div>
-                  <div className="chart">
-                    <h2>Earning expenses</h2>
-                    <div>
-                        <Doughnut data={data}
-                        />
-                        
-                    </div>
+            <h1 class="heading">
+                <span>R</span>
+                <span>E</span>
+                <span>C</span>
+                <span>E</span>
 
-                  
-                </div>
-              
+                <span>N</span>
+                <span>T</span>
+                <span className="space"></span>
+                <span>P</span>
+                <span>O</span>
+               
+                <span>S</span>
+                <span>T</span>
+                <span>S</span>
 
+            </h1>
+         
+         <div className="recent-updates">
+          <div className="recent-news">
+            <div className="box">
+              <div className="image">
+                <img src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/dashboard/img_1.jpg"></img>
+              </div>
+              <div className="content1">
+                <p>10 Essential Tips for Managing Your Expenses and Increasing Your Income</p>
+               </div>
+               <div class="user1">
+        <img src="https://img.freepik.com/free-vector/cute-panda-with-bamboo_138676-3053.jpg?w=2000" alt="user" />
+        <div class="user-info">
+          <h5>Ashutosh Kumar</h5>
+          <small>1w ago</small>
+        </div>
+      </div>
             </div>
-            
+            <div className="box">
+              <div className="image">
+                <img src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/dashboard/img_1.jpg" alt="sj"></img>
+              </div>
+              <div className="content1">
+                <p>10 Essential Tips for Managing Your Expenses and Increasing Your Income</p>
+               </div>
+               <div class="user1">
+        <img src="https://img.freepik.com/free-vector/cute-panda-with-bamboo_138676-3053.jpg?w=2000" alt="user" />
+        <div class="user-info">
+          <h5>Ashutosh Kumar</h5>
+          <small>1w ago</small>
+        </div>
+      </div>
+            </div>
+            <div className="box">
+              <div className="image">
+                <img src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/dashboard/img_1.jpg"></img>
+              </div>
+              <div className="content1">
+                <p>10 Essential Tips for Managing Your Expenses and Increasing Your Income</p>
+               </div>
+               <div class="user1">
+        <img src="https://img.freepik.com/free-vector/cute-panda-with-bamboo_138676-3053.jpg?w=2000" alt="user" />
+        <div class="user-info">
+          <h5>Ashutosh Kumar</h5>
+          <small>1w ago</small>
+        </div>
+      </div>
+            </div>
+            <div className="box">
+              <div className="image">
+                <img src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/dashboard/img_1.jpg"></img>
+              </div>
+              <div className="content1">
+                <p>10 Essential Tips for Managing Your Expenses and Increasing Your Income</p>
+               </div>
+               <div class="user1">
+        <img src="https://img.freepik.com/free-vector/cute-panda-with-bamboo_138676-3053.jpg?w=2000" alt="user" />
+        <div class="user-info">
+          <h5>Ashutosh Kumar</h5>
+          <small>1w ago</small>
+        </div>
+      </div>
+            </div>
+          </div>
+         </div>
+         
         </div>
       </>}
         </div>

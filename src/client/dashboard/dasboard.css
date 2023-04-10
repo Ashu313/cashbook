@@ -111,6 +111,11 @@ span{
    min-width: 60px;
    font-size: 24px;
    text-align: center;
+   margin-right: 5px;
+   /* min-width: 60px; */
+   /* font-size: 24px; */
+   /* text-align: center; */
+   margin-top: -15px;
   }
 
 .sidebar ul li a:hover{
@@ -206,6 +211,43 @@ i{
 .menu-icons{
     display: none;;
 }
+.recent-news{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+}
+.recent-news .box{
+   background-color: cornflowerblue;
+   width: 400px;
+   border-radius: 0.25rem;
+}
+.image img{
+    width: 100%;
+    height: 100%;
+}
+.content1{
+    position: relative;
+    top: 10px;
+}
+.user1 {
+    display: flex;
+    margin-top: auto;
+  }
+  
+  .user1 img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  .user1-info h5 {
+    margin: 0;
+  }
+  .user1-info small {
+    color: #545d7a;
+  }
+  
 @media (max-width:1120px)
 {
 
