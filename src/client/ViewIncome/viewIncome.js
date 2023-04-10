@@ -10,6 +10,8 @@ import Pagination from './pagination';
 import IncomeTable from './userContent';
 import AddIncome from '../incomeTable/income';
 import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
+import { ColorRing } from 'react-loader-spinner';
+
 
 
 
@@ -49,6 +51,7 @@ const ViewIncome=()=>
 
   const state=useSelector(state=>state?.users);
   const {Profile}=state;
+  const {Loading}=state;
  
   const income=useSelector(state=>state?.income);//store wala
   const {incomeList}=income;
@@ -88,6 +91,23 @@ const handleFilter = event => {
     <nav>
     <a href='/'><button style={{position:'initial'}}>Dashboard</button></a>
     </nav>
+    {Loading?
+				<>
+				<div className='svg-cont' style={{textAlign:'center' ,marginTop:'20%', bottom:'50%',top:'50%'}}>
+		<ColorRing
+  visible={true}
+  height="200"
+  width="200"
+  JustifyContent='center'
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/>
+</div>
+</>
+:
+<>
     <div className="table-content">
     <div className="search">
             <input type="text" placeholder="search here" value={filter1} onChange={handleFilter}></input>
@@ -155,6 +175,9 @@ const handleFilter = event => {
   )
 }
 </>
+
+</>
+ }
 </>
   )
 }

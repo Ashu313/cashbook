@@ -8,6 +8,8 @@ import AddExpense from '../expenseTable/expense';
 import { EditExpense } from '../../redux/slices/expense/expense';
 import "./pagination.css"
 import { setDarkTheme, setDefaultTheme } from "../../redux/slices/darkmode/darkmode";
+import { ColorRing } from 'react-loader-spinner';
+
 
 
 
@@ -56,6 +58,7 @@ useEffect(()=>{
 
   const state=useSelector(state=>state?.users);
   const {Profile}=state;
+  const {Loading}=state;
     useEffect(()=>{
     dispatch(UserProfile());
   },[dispatch]);
@@ -98,6 +101,23 @@ const handleFilter = event => {
     <a href='/'><button>Dashboard</button></a>
      
    </nav>
+   {Loading?
+				<>
+				<div className='svg-cont' style={{textAlign:'center' ,marginTop:'20%', bottom:'50%',top:'50%'}}>
+		<ColorRing
+  visible={true}
+  height="200"
+  width="200"
+  JustifyContent='center'
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/>
+</div>
+</>
+:
+<>
     <div className="table-content">
 
     <div className="search">
@@ -121,12 +141,13 @@ const handleFilter = event => {
                 <span>E</span>
 
             </h1>
-
+        
       <h1 style={{textDecoration:'none',textAlign:'center',textTransform:'capitalize'}}> HELLO ! {Profile?.firstname}</h1>
       <p style={{textAlign:'center',fontSize:'20px'}}>THIS IS YOUR EXPENSE</p>
     </div>
     <button onClick={toggleExpense} >Add expense</button>
     <AddExpense  showIncomeBox={showExpense} toggleIncomeBox={toggleExpense}/>
+
     <table class="table" style={{backgroundColor:'black',color:'white',position:'relative'}}>
   <thead>
     <tr>
@@ -162,8 +183,15 @@ const handleFilter = event => {
      />
   )
 }
+   
 </>
+   
+   
 </>
+ }
+ </>
+ 
   )
+
 }
 export default ViewExpense;
