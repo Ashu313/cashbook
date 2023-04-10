@@ -225,6 +225,11 @@ i{
     
     
 }
+@media (max-width:540px) {
+    .cards .card{
+        width: inherit;
+    }
+}
 @media (max-width:880px)
 {
     .sidebar.active{
@@ -250,9 +255,7 @@ i{
     .charts{
         grid-template-columns: 1fr;
     }
-    .cards .card{
-        width: inherit;
-    }
+  
     .main{
         width: 100%;
     
