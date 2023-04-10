@@ -137,7 +137,7 @@ const handleFilter = event => {
                 <span>E</span>
                
                 <span>N</span>
-                <span>C</span>
+                <span>S</span>
                 <span>E</span>
 
             </h1>
@@ -162,7 +162,7 @@ const handleFilter = event => {
   <tbody>
     <>
     {Profile?.expenses?.length <= 0 ? (
-                      <h2>No Expense Found</h2>
+                      <h2 style={{textAlign:'center'}}>No Expense Found😥😥</h2>
                     ) :
     
       ( currentExpenses?.map(exp=>(

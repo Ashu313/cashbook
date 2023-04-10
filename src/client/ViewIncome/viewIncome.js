@@ -152,7 +152,7 @@ const handleFilter = event => {
   <tbody>
     <>
     {currentincomes?.length <= 0 ? (
-                      <h2>Noincome Found</h2>
+                      <h2 style={{textAlign:'center'}}>Noincome Found😥😣😥 </h2>
                     ) :
     
       (currentincomes?.map(exp=>(
